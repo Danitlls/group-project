@@ -1,0 +1,198 @@
+{ "users": [{
+    "name": "Dani",
+    "gender": "Female",
+    "age": 30,
+    "dietChoice": "High-Protein",
+    "activityLevel": "High",
+    "height": 163,
+    "weight": 49,
+    "allergies": ["Shellfish"],
+    "dailyNutrition": [
+      {"calories": 2000},
+      {"carbs": 304},
+      {"fat": 65},
+      {"protein": 50}
+    ],
+    "bmi": 20.1,
+    "planned program": [{
+      "date": "07-18-2017",
+      "meals": [{
+        "name": "First Meal",
+        "calories": 550,
+        "carbohydrates": 41,
+        "fat": 23,
+        "protein": 48,
+        "ingredients": [{
+          "name":"Yukon Potatoes",
+          "calories": 40,
+          "carbs": 140,
+          "fat": 20,
+          "protein": 2
+        },{
+          "name":"Broccoli",
+          "calories": 40,
+          "carbs": 140,
+          "fat": 20,
+          "protein": 2
+        },{
+          "name":"Celery",
+          "calories": 40,
+          "carbs": 140,
+          "fat": 20,
+          "protein": 2
+        }],
+        "healthLabels": ["Low-Carb", "Alcohol-Free"],
+        "link": "http://www.epicurious.com/recipes/food/views/Roast-Chicken-394676",
+        "image": "https://www.edamam.com/web-img/c24/c24a86f98a8cc1f13f795bdba2dae614.jpg"
+      },{
+        "name": "Second Meal",
+        "calories": 550,
+        "carbohydrates": 41,
+        "fat": 23,
+        "protein": 48,
+        "ingredients": [
+          {
+            "name":"Yukon Potatoes",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          },{
+            "name":"Broccoli",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          },{
+            "name":"Celery",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          }],
+          "healthLabels": ["Low-Carb", "Alcohol-Free"],
+          "link": "http://www.epicurious.com/recipes/food/views/Roast-Chicken-394676",
+          "image": "https://www.edamam.com/web-img/c24/c24a86f98a8cc1f13f795bdba2dae614.jpg"
+      },{
+        "name": "Third Meal",
+        "calories": 550,
+        "carbohydrates": 41,
+        "fat": 23,
+        "protein": 48,
+        "ingredients": [
+          {
+            "name":"Yukon Potatoes",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          },{
+            "name":"Broccoli",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          },{
+            "name":"Celery",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          }],
+          "healthLabels": ["Low-Carb", "Alcohol-Free"],
+          "link": "http://www.epicurious.com/recipes/food/views/Roast-Chicken-394676",
+          "image": "https://www.edamam.com/web-img/c24/c24a86f98a8cc1f13f795bdba2dae614.jpg"
+      }]
+    }],
+    "Actual Program": [{
+      "date": "07-18-2017",
+      "meals": [{
+        "name": "First Meal",
+        "calories": 550,
+        "carbohydrates": 41,
+        "fat": 23,
+        "protein": 48,
+        "ingredients": [{
+          "name":"Yukon Potatoes",
+          "calories": 40,
+          "carbs": 140,
+          "fat": 20,
+          "protein": 2
+        },{
+          "name":"Broccoli",
+          "calories": 40,
+          "carbs": 140,
+          "fat": 20,
+          "protein": 2
+        },{
+          "name":"Celery",
+          "calories": 40,
+          "carbs": 140,
+          "fat": 20,
+          "protein": 2
+        }],
+        "healthLabels": ["Low-Carb", "Alcohol-Free"],
+        "link": "http://www.epicurious.com/recipes/food/views/Roast-Chicken-394676",
+        "image": "https://www.edamam.com/web-img/c24/c24a86f98a8cc1f13f795bdba2dae614.jpg"
+      },{
+        "name": "Second Meal",
+        "calories": 550,
+        "carbohydrates": 41,
+        "fat": 23,
+        "protein": 48,
+        "ingredients": [
+          {
+            "name":"Yukon Potatoes",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          },{
+            "name":"Broccoli",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          },{
+            "name":"Celery",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          }],
+          "healthLabels": ["Low-Carb", "Alcohol-Free"],
+          "link": "http://www.epicurious.com/recipes/food/views/Roast-Chicken-394676",
+          "image": "https://www.edamam.com/web-img/c24/c24a86f98a8cc1f13f795bdba2dae614.jpg"
+      },{
+        "name": "Third Meal",
+        "calories": 550,
+        "carbohydrates": 41,
+        "fat": 23,
+        "protein": 48,
+        "ingredients": [
+          {
+            "name":"Yukon Potatoes",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          },{
+            "name":"Broccoli",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          },{
+            "name":"Celery",
+            "calories": 40,
+            "carbs": 140,
+            "fat": 20,
+            "protein": 2
+          }],
+          "healthLabels": ["Low-Carb", "Alcohol-Free"],
+          "link": "http://www.epicurious.com/recipes/food/views/Roast-Chicken-394676",
+          "image": "https://www.edamam.com/web-img/c24/c24a86f98a8cc1f13f795bdba2dae614.jpg"
+      }]
+    }]
+  }]
+}
