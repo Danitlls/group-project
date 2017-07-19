@@ -15,11 +15,13 @@ export class RecipeService {
 
   getRecipe(search){
     console.log(this.caloriesHigh)
-    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&yield=10&from=0&to=3&calories=gte%20" + this.caloriesLow + ",%20lte%20" + this.caloriesHigh + "&health=tree-nut-free&peanut-free")
+    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=0&to=10&calories=gte%20" + this.caloriesLow + ",%20lte%20" + this.caloriesHigh + "&health=tree-nut-free&peanut-free")
   }
 
   saveRecipes(search: string){
-    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=0&to=3&calories=gte%20591,%20lte%20722").subscribe(response => {
+    let random = Math.floor((Math.random() * 100) + 1);
+    let secondRandom = random + 3;
+    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=" + random + "&to=" + secondRandom + "&calories=gte%20591,%20lte%20722").subscribe(response => {
       let foundRecipe: Recipe;
       for(let result of response.json().hits) {
         let caloriesPer = (result.recipe.calories / result.recipe.yield);
