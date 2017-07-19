@@ -2,7 +2,8 @@ import { Recipe } from './recipe.model';
 
 export class User {
   allergies: string[] = [];
-  meals: Recipe[] = [];
+  plannedProgram: Day[] = [];
+  actualProgram: Day[] = [];
   dailyNutrition: [
     {"calories", 0},
     {"carbs", 0},
@@ -13,11 +14,19 @@ export class User {
   // enrollDate: new Date();
   // goalDate: new Date();
   constructor(public name: string,
+              public email: string,
+              public login: string,
+              public password: string,
               public gender: string,
               public age: number,
+              public goal: string,
               public dietChoice: string,
               public activityLevel: string,
               public height: number,
-              public weight: number,
+              public currentWeight: number,
+              public goalWeight: number,
+              public goalDate: string,
+              public weeklyWeightGoal: number,
+              public weeklyWeightChange: number
   ){}
 }

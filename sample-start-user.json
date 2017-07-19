@@ -1,0 +1,28 @@
+{ "users": [{
+    "name": "Dani",
+    "email": "danidanidani@gmail.com",
+    "login": "dani123",
+    "password": "ilovepatrick",
+    "gender": "Female",
+    "age": 30,
+    "goal": "gain weight",
+    "dietChoice": "High-Protein",
+    "allergies": ["Shellfish"],
+    "activityLevel": "High",
+    "height": 163,
+    "currentWeight": 49,
+    "goalWeight": 53,
+    "goalDate": "08-19-2017",
+    "weeklyWeightGoal": 1,
+    "weeklyWeightChange": 0.3,
+    "dailyNutrition": [
+      {"calories": 2000},
+      {"carbs": 304},
+      {"fat": 65},
+      {"protein": 50}
+    ],
+    "bmi": 20.1,
+    "Planned program": [],
+    "Actual Program": []
+  }]
+}
