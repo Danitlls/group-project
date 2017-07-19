@@ -21,13 +21,14 @@ export class User {
               public age: number,
               public dietChoice: string,
               public activityLevel: string,
-              public goal: string,
               public height: number,
               public currentWeight: number,
+              public goal: string,
               public goalWeight: number,
+              public goalStartDate: string,
               public goalDate: string,
               public weeklyWeightGoal: number,
-              public weeklyWeightChange: number,
-              public timestamp: Date
+              public weeklyWeightChange: number
+              // public timestamp: Date
   ){}
 }

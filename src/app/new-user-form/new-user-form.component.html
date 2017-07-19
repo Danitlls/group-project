@@ -67,10 +67,8 @@
       <label>Your Activity Level:</label><br>
       <select #newActivityLevel>
         <option> Sedentary </option>
-        <option> Lightly Active </option>
         <option> Moderately Active</option>
-        <option> Very Active </option>
-        <option> Extremely Active </option>
+        <option> Active </option>
       </select>
     </div>
   </div>
@@ -95,9 +93,13 @@
       <input type="number" #newGoalWeight>
     </div>
     <div class="">
+      <label for="user-goalStartDate">Start Date</label>
+      <input type="date" #newStartDate>
+    </div>
+    <div class="">
       <label for="user-goalDate">Goal Date</label>
       <input type="date" #newGoalDate>
     </div>
   </div>
-  <button type="submit">Create Goal!</button>
+  <button (click)="submitForm(newName.value, newEmail.value, newLogin.value, newPassword.value, newGender.value, newAge.value, newDietChoice.value, newAllergies.value, newActivityLevel.value, newHeight.value, newWeight.value, newGoal.value, newGoalWeight.value, newStartDate.value, newGoalDate.value)">Create Account</button>
 </form>
