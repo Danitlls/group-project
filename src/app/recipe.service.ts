@@ -11,27 +11,40 @@ export class RecipeService {
   RecipeKey = recipeKey;
   caloriesLow = 100;
   caloriesHigh = 500;
+  tempRecipe: Recipe[];
   constructor(private http: Http, private secondRecipeService: SecondRecipeService) { }
 
-  getRecipe(search){
-    console.log(this.caloriesHigh)
-    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=0&to=10&calories=gte%20" + this.caloriesLow + ",%20lte%20" + this.caloriesHigh + "&health=tree-nut-free&peanut-free")
-  }
+  getRecipeFromApiByIngredient(search: string){
+    let random = Math.floor((Math.random() * 50) + 1);
+    // let secondRandom = random;
+    console.log(random);
 
-  saveRecipes(search: string){
-    let random = Math.floor((Math.random() * 100) + 1);
-    let secondRandom = random + 3;
-    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=" + random + "&to=" + secondRandom + "&calories=gte%20591,%20lte%20722").subscribe(response => {
+    // console.log(this.caloriesHigh)
+    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=" + random+ "&to=" + (random + 1) + "&calories=gte%20" + this.caloriesLow + ",%20lte%20" + this.caloriesHigh + "&health=tree-nut-free&peanut-free").subscribe(response => {
       let foundRecipe: Recipe;
+
       for(let result of response.json().hits) {
         let caloriesPer = (result.recipe.calories / result.recipe.yield);
         foundRecipe = new Recipe(result.recipe.label, caloriesPer, result.recipe.totalNutrients.CHOCDF.quantity, result.recipe.totalNutrients.FAT.quantity, result.recipe.totalNutrients.PROCNT.quantity, result.recipe.url, result.recipe.image)
-
-        for(let item of result.recipe.ingredients){
-          foundRecipe.ingredients.push(item.text);
-        }
         console.log(foundRecipe);
       }
     });
   }
+
+  // getBasicRecipesForDay(){
+  // let secondRandom = random + 3;
+  //
+  // }
 }
+
+//   saveRecipes(search: string){
+//
+//     return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=" + random + "&to=" + secondRandom + "&calories=gte%20591,%20lte%20722")
+//
+//         for(let item of result.recipe.ingredients){
+//           foundRecipe.ingredients.push(item.text);
+//         }
+//         console.log(foundRecipe);
+//     }
+//
+// }
