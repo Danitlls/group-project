@@ -1,3 +1,103 @@
-<p>
-  new-user-form works!
-</p>
+<!-- create new user: -->
+<form>
+  <div id="login">
+    <div class="">
+      <label for="name">Your Name</label>
+      <input #newName id="name">
+    </div>
+    <div class="">
+      <label for="user-email">Email</label>
+      <input #newEmail id="user-email">
+    </div>
+    <div class="">
+      <label for="user-login">Username</label>
+      <input #newLogin id="user-login">
+    </div>
+    <div class="">
+      <label for="password">Password</label>
+      <input #newPassword id="user-password">
+    </div>
+  </div>
+<!-- Add new user PREFERENCES: -->
+  <div id="personal">
+    <div class="">
+      <label for="gender">Gender</label>
+      <input type="radio" value="male" name="gender" #newGender > Male
+      <input type="radio" value="female" name="gender" #newGender > Female
+    </div>
+
+    <div class="">
+      <label for="user-age">Age</label>
+      <input type="number" #newAge id="user-age">
+    </div>
+    <div class="">
+      checkbox:
+      <label for="user-diet-choice">Diet</label>
+      <select #newDietChoice>
+        <option>I'm Fine</option>
+        <option>Vegetarian</option>
+        <option>Vegan</option>
+        <option>Paleo</option>
+        <option>High-Fiber</option>
+        <option>High-Protein</option>
+        <option>Low-Carb</option>
+        <option>Low-Fat</option>
+        <option>Low-Sodium</option>
+        <option>Low-Sugar</option>
+        <option>Alcohol-Free</option>
+        <option>Balanced</option>
+      </select>
+    </div>
+    <div class="">
+      <label for="allergies">Allergies</label>
+      <select #newAllergies>
+        <option>I'm Good</option>
+        <option>Peanuts</option>
+        <option>Dairy</option>
+        <option>Gluten</option>
+        <option>Shellfish</option>
+        <option>Soy</option>
+        <option>Wheat</option>
+        <option>Tree Nuts</option>
+        <option>Eggs</option>
+        <option>Fish</option>
+      </select>
+    </div>
+    <div class="">
+      <label>Your Activity Level:</label><br>
+      <select #newActivityLevel>
+        <option> Sedentary </option>
+        <option> Lightly Active </option>
+        <option> Moderately Active</option>
+        <option> Very Active </option>
+        <option> Extremely Active </option>
+      </select>
+    </div>
+  </div>
+<!-- create new Goal: -->
+  <div id="goal">
+    <div class="">
+      <label for="user-height">Height</label>
+      <input type="number" #newHeight>
+    </div>
+    <div class="">
+      <label for="user-weight">Weight</label>
+      <input type="number" #newCurrentWeight>
+    </div>
+    <div class="">
+      <label for="goal">Overall Goal</label>
+      <input type="radio" value="gain" name="goal" #newGoal > Gain Weight
+      <input type="radio" value="maintain" name="goal" #newGoal > Maintain Weight
+      <input type="radio" value="lose" name="goal" #newGoal > Lose Weight
+    </div>
+    <div class="">
+      <label for="user-goalWeight">Goal Weight</label>
+      <input type="number" #newGoalWeight>
+    </div>
+    <div class="">
+      <label for="user-goalDate">Goal Date</label>
+      <input type="date" #newGoalDate>
+    </div>
+  </div>
+  <button type="submit">Create Goal!</button>
+</form>

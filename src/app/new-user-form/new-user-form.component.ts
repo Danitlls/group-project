@@ -17,4 +17,7 @@ export class NewUserFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  submitForm(){
+
+  }
 }
