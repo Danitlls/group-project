@@ -3,13 +3,17 @@ import { User } from './user.model';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Recipe } from './recipe.model';
 
+
 @Injectable()
 export class UserService {
   users: FirebaseListObservable<any[]>;
 
   constructor(private database: AngularFireDatabase) {
     this.users = database.list('users');
-    // this.weeklyRecipes = database.list('users/0/weeklyRecipes');
+  }
+  
+  addUser(newUser: User){
+    this.users.push(newUser);
   }
 
   getUserById(userId: string){
