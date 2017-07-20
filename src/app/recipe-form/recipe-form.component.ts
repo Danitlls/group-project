@@ -14,18 +14,21 @@ export class RecipeFormComponent implements OnInit {
   recipes: any[]=null;
 
   constructor(private router: Router, private recipeService: RecipeService) { }
-  getRecipes(search: string) {
-    this.recipeService.getRecipe(search).subscribe(response => {
-      this.recipes = response.json();
-      console.log(response.json());
-    });
+  getRecipes(search) {
+    // this.recipeService.getRecipeFromApiByIngredient(search);
+    // this.recipeService.getRecipe(search).subscribe(response => {
+    //   // this.recipes = response.json();
+    //   // console.log(response.json());
+    //   console.log("test");
+    // });
+
   }
 
   ngOnInit() {
   }
 
-  triggerSaveRecipes(search) {
-    this.recipeService.saveRecipes(search);
-  }
+  // triggerSaveRecipes(search) {
+  //   this.recipeService.saveRecipes(search);
+  // }
 
 }

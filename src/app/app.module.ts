@@ -9,6 +9,7 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { masterFirebaseConfig2 } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import { NewUserFormComponent } from './new-user-form/new-user-form.component';
 
 
@@ -18,6 +19,8 @@ import { NewUserFormComponent } from './new-user-form/new-user-form.component';
 //   databaseURL: masterFirebaseConfig.databaseURL,
 //   storageBucket: masterFirebaseConfig.storageBucket
 // };
+
+import { UserComponent } from './user/user.component';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig2.apiKey,
@@ -30,7 +33,10 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     RecipeFormComponent,
-    NewUserFormComponent
+
+    NewUserFormComponent,
+
+    UserComponent
   ],
   imports: [
     BrowserModule,
