@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import * as moment from 'moment';
 
 
 @Component({
@@ -17,27 +18,58 @@ export class NewUserFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  submitForm(name: string, email: string, login: string, password: string, gender: string, age: number, dietChoice: string, allergies: string, activityLevel: string, height: number, currentWeight: number, goal: string, goalWeight: number, goalStartDate: Date, goalDate: Date, weeklyWeightGoal: number, weeklyWeightChange: number)
+  //Calculate BMI
+  BMICalc(currentWeight: number, height: number){
+    return (currentWeight * 0.45)/((height * 0.025)*(height * 0.025));
+  }
+
+  //Calculate BMR
+  BMRCalc(currentWeight: number, height: number, gender: string, age: number){
+    if(gender === "male"){
+      return 65 + (6.2 * currentWeight) + (12.7 * height) - (6.8 * age);
+    } else if (gender === "female"){
+      return 655 + (4.3 * currentWeight) + (4.3 * height) - (4.7 * age);
+    }
+  }
+
+  //Calculate difference between goalStartDate and goalDate using moments
+  dateDifferenceCalc(goalDate: Date, goalStartDate: Date){
+    var goalDateMoment = moment(goalDate);
+    var goalStartDateMoment = moment(goalStartDate);
+    return goalDateMoment.diff(goalStartDateMoment, 'days', true);
+  }
+
+  //Calculate caloric Intake based on activity level
+  caloricIntakeCalc(userBMR: number, activityLevel: number){
+    return userBMR * activityLevel;
+  }
+
+
+  submitForm(name: string, email: string, login: string, password: string, gender: string, age: number, dietChoice: string, allergies: string, activityLevel: number, height: number, currentWeight: number, goal: string, goalWeight: number, goalStartDate: Date, goalDate: Date, weeklyWeightGoal: number, weeklyWeightChange: number)
   {
-    var userBmi = (currentWeight * 0.45)/((height * 0.025)*(height * 0.025));
-    var userWeeklyGoal;
-    console.log(userBmi);
+
+    var userBMI = this.BMICalc(currentWeight, height);
+    var userBMR = this.BMRCalc(currentWeight, height, gender, age);
+    var dateDifference = this.dateDifferenceCalc(goalDate, goalStartDate);
+    var caloricIntake = this.caloricIntakeCalc(userBMR, activityLevel);
+    console.log("asdfdsf" + caloricIntake);
+
+    //Calculate caloric Intake based on weight gain or weight lose goal
     if(goal === "gain"){
-      // userWeeklyGoal = (goalWeight - currentWeight)/(goalDate - goalStartDate);
+      caloricIntake += (caloricIntake * .2);
+      var weeklyGoal = (goalWeight - currentWeight)/dateDifference;
     }
     else if(goal === "lose"){
-      // userWeeklyGoal = (currentWeight - goalWeight)/(goalDate - goalStartDate);
+      caloricIntake -= (caloricIntake * .2);
+      var weeklyGoal = (currentWeight - goalWeight)/dateDifference;
     }
-    else if(goal === "maintain"){
-      userWeeklyGoal = 0;
-    }
-    var newUser = new User(name, email, login, password, gender, age, dietChoice, activityLevel, height, currentWeight, goal, goalWeight, goalStartDate, goalDate, weeklyWeightGoal, weeklyWeightChange);
+
+    // console.log(userBMI + " and " + userBMR);
+
+    var newUser = new User(name, email, login, password, gender, age, dietChoice, activityLevel, height, currentWeight, goal, goalWeight, goalStartDate, goalDate, userBMI, userBMR, dateDifference, caloricIntake, weeklyGoal);
+
     //change it so you can push more than one...
     newUser.allergies.push(allergies);
-    console.log(allergies);
+    console.log(newUser);
   }
 }
-
-
-//allergies, userWeeklyGoal, userWeeklyChange
-// var newUser = new User(name, email, login, password, gender, age, dietChoice, allergies, activityLevel, height, currentWeight, goal, goalWeight, goalStartDate, goalDate, userWeeklyGoal, userWeeklyChange)

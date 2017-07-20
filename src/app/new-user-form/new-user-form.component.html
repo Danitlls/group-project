@@ -70,9 +70,11 @@
     <div class="">
       <label>Your Activity Level:</label><br>
       <select #newActivityLevel>
-        <option value="sedentary"> Sedentary </option>
-        <option value="moderately active"> Moderately Active</option>
-        <option value="active"> Active </option>
+        <option value="1.2"> I rarely exercise </option>
+        <option value="1.375"> I exercise on 1 to 3 days per week </option>
+        <option value="1.55"> I exercise on 3 to 5 days per week </option>
+        <option value="1.725"> I exercise 6 to 7 days per week </option>
+        <option value="1.9"> I exercise every day and have a physical job or if you often exercise twice a day </option>
       </select>
     </div>
   </div>
@@ -106,8 +108,9 @@
       <label for="user-goalDate">Goal Date</label>
       <input type="date" #newGoalDate>
     </div>
+    <input #dateDifference value="{{newGoalDate.value | amDifference: newStartDate.value :'days' : true}}">
+    <!-- {{newGoalDate.value | amDifference: newStartDate.value :'days' : true}} -->
   </div>
-  <button (click)="submitForm(newName.value, newEmail.value, newLogin.value, newPassword.value, newGender.value, newAge.value, newDietChoice.value, newAllergies.value, newActivityLevel.value, newHeight.value, newCurrentWeight.value, newGoal.value, newGoalWeight.value, newStartDate.value, newGoalDate.value)">Create Account</button>
-</form>
 
-<p *ngIf="newGoalDate.value">{{newGoalDate.value | amDifference: newStartDate.value :'days' : true}}</p>
+  <button (click)="submitForm(newName.value, newEmail.value, newLogin.value, newPassword.value, newGender.value, newAge.value, newDietChoice.value, newAllergies.value, newActivityLevel.value, newHeight.value, newCurrentWeight.value, newGoal.value, newGoalWeight.value, newStartDate.value, newGoalDate.value, dateDifference.value)">Create Account</button>
+</form>
