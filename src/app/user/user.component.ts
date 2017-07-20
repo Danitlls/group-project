@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { RecipeService } from '../recipe.service';
+import { Router } from '@angular/router';
+import { SecondRecipeService } from '../second-recipe.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.sass']
+  styleUrls: ['./user.component.sass'],
+  providers: [RecipeService, SecondRecipeService]
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, public recipeService: RecipeService) { }
 
   ngOnInit() {
+  }
+
+  getWeeklyMenu(){
+    this.recipeService.generateWeeklyMenu();
   }
 
   //REUSABLE FUNCTIONS:

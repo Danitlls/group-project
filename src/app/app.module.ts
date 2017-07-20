@@ -8,7 +8,6 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { NewMenuComponent } from './new-menu/new-menu.component';
 import { UserComponent } from './user/user.component';
 
 export const firebaseConfig = {
@@ -22,7 +21,6 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     RecipeFormComponent,
-    NewMenuComponent,
     UserComponent
   ],
   imports: [
