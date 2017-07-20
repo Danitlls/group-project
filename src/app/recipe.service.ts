@@ -39,7 +39,7 @@ export class RecipeService {
     this.userService.getUserById(selectedUser.$key).update({
       weeklyRecipes: []
     });
-    var ingredients: string [] = ["ice", "milk"];
+    var ingredients: string [] = ["beef", "turkey"];
     var count = 0;
 
     for (let ingredient of ingredients){
