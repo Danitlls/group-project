@@ -18,7 +18,7 @@ export class RecipeService {
     let random = Math.floor((Math.random() * 50) + 1);
     // let secondRandom = random;
 
-    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=" + random + "&to=" + (random + count) + "&calories=gte%20" + this.caloriesLow + ",%20lte%20" + this.caloriesHigh).subscribe(response => {
+    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=0&to=20&calories=gte%20" + this.caloriesLow + ",%20lte%20" + this.caloriesHigh).subscribe(response => {
       let foundRecipe: Recipe;
 
       for(let result of response.json().hits) {
@@ -35,24 +35,25 @@ export class RecipeService {
     let searchParam = " ";
 
     console.log(random);
-    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId + "&app_key=" + this.RecipeKey + "&from=" + random + "&to=" + (random + count) + "&calories=gte%20" + caloriesLow + ",%20lte%20" + caloriesHigh + "&health=tree-nut-free").subscribe(response => {
+    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId + "&app_key=" + this.RecipeKey + "&from=0&to=20&calories=gte%20" + caloriesLow + ",%20lte%20" + caloriesHigh + "&health=tree-nut-free").subscribe(response => {
+      console.log(response.json().hits);
       let foundRecipe: Recipe;
 
       for(let result of response.json().hits) {
-        if(result.recipe.totalNutrients.PROCNT.quantity) {
+        if(result.recipe.totalNutrients.PROCNT && result.recipe.totalNutrients.FAT && result.recipe.totalNutrients.CHOCDF) {
           let caloriesPer = (result.recipe.calories / result.recipe.yield);
-          foundRecipe = new Recipe(result.recipe.label, caloriesPer, result.recipe.totalNutrients.CHOCDF.quantity, result.recipe.totalNutrients.FAT.quantity, result.recipe.totalNutrients.PROCNT.quantity, result.recipe.url, result.recipe.image)
+          foundRecipe = new Recipe(result.recipe.label, caloriesPer,result.recipe.totalNutrients.CHOCDF.quantity,10,10, result.recipe.url, result.recipe.image)
           console.log(foundRecipe);
           this.tempRecipes.push(foundRecipe);
-          console.log(result);
         }
       }
+
     });
   }
 
   generateWeeklyMenu(){
     this.tempRecipes = [];
-    var ingredients: string [] = ["beef", "turkey", "salmon", "broccoli", "pork"];
+    var ingredients: string [] = ["beef", "chicken", "salmon", "broccoli","pork"];
 
     for (let ingredient of ingredients){
       console.log(ingredient);
