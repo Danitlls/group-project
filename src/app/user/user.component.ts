@@ -1,23 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import { RecipeService } from '../recipe.service';
-import { Router } from '@angular/router';
 import { SecondRecipeService } from '../second-recipe.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.sass'],
-  providers: [RecipeService, SecondRecipeService]
+  providers: [RecipeService, SecondRecipeService, UserService]
 })
 export class UserComponent implements OnInit {
-
-  constructor(private router: Router, public recipeService: RecipeService) { }
+  userId;
+  currentUser;
+  constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
   ngOnInit() {
+    this.route.params.forEach((urlParametersArray) => {
+      this.userId = urlParametersArray['id'];
+    });
+    this.userService.getUserById(this.userId).subscribe(dataLastEmittedFromObserver => {
+      this.currentUser = dataLastEmittedFromObserver;
+
+      console.log(this.currentUser);
+    })
   }
 
   getWeeklyMenu(){
-    this.recipeService.generateWeeklyMenu();
+    this.recipeService.generateWeeklyMenu(this.currentUser);
   }
 
   //REUSABLE FUNCTIONS:

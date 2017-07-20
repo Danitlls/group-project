@@ -1,12 +1,11 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { UserComponent } from './user/user.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
-import { NewMenuComponent } from './new-menu/new-menu.component';
 const appRoutes: Routes = [
   {
-    path: '',
-    component: RecipeFormComponent
+    path: 'user-profile/:id',
+    component: UserComponent
   }
   // ,
   // {

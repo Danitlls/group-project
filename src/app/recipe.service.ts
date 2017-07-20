@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { recipeId, recipeKey } from './api-keys';
-import { SecondRecipeService } from './second-recipe.service';
+import { UserService } from './user.service';
 import { Recipe } from './recipe.model';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class RecipeService {
   caloriesLow = 100;
   caloriesHigh = 1000;
   weekRecipes: Recipe[] = [];
-  constructor(private http: Http, private secondRecipeService: SecondRecipeService) { }
+  constructor(private http: Http, private userService: UserService) { }
 
   getRecipeFromApiByIngredient(search: string, count: number){
     let random = Math.floor((Math.random() * 50) + 1);
@@ -51,8 +51,7 @@ export class RecipeService {
     });
   }
 
-  generateWeeklyMenu(){
-    this.weekRecipes = [];
+  generateWeeklyMenu(selectedUserId){
     var ingredients: string [] = ["beef", "chicken"];
 
     for (let ingredient of ingredients){
@@ -60,7 +59,7 @@ export class RecipeService {
       this.getBasicRecipesForDay(this.caloriesLow, this.caloriesHigh, 5, ingredient);
     }
     console.log(this.weekRecipes);
-    this.secondRecipeService.saveRecipesToDatabase(this.weekRecipes);
+    this.userService.saveRecipesToDatabase(this.weekRecipes, selectedUserId);
   }
 }
 

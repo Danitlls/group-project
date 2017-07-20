@@ -2,7 +2,7 @@ import { Recipe } from './recipe.model';
 
 export class User {
   allergies: string[] = [];
-  meals: Recipe[] = [];
+  weeklyRecipes: Recipe[] = [];
   dailyNutrition: [
     {"calories", 0},
     {"carbs", 0},
