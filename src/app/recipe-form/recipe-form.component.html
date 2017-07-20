@@ -3,6 +3,21 @@
     <label for="search">Search by food:</label>
     <input #search>
   </div>
-  <button (click)='getRecipes()'>Get Recipes</button>
-  <button (click)='triggerSaveRecipes(search.value)'>Save Recipes</button>
+  <button (click)='getRecipes(search.value)'>Get Recipes</button>
+  <!-- <button (click)='triggerSaveRecipes(search.value)'>Save Recipes</button> -->
 </form>
+
+<!-- <div *ngIf=“tempRecipes.length>0”>
+	<div *ngFor=“let tempRecipe of tempRecipes”>
+		<div class="recipeImage">
+			<img src=“{{tempRecipe.image}}>
+		</div>
+		<h2>{{tempRecipe.name}}></h2>
+    <ul>
+      <li>Calories: {{tempRecipe.calories}}</li>
+      <li>Fat: {{tempRecipe.fat}}</li>
+      <li>Carbohydrates: {{tempRecipe.carbs}}</li>
+      <li>Protein: {{tempRecipe.protein}}</li>
+    </ul>
+	</div>
+</div> -->
