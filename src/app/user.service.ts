@@ -9,22 +9,27 @@ export class UserService {
 
   constructor(private database: AngularFireDatabase) {
     this.users = database.list('users');
-    this
     // this.weeklyRecipes = database.list('users/0/weeklyRecipes');
   }
 
   getUserById(userId: string){
     return this.database.object('users/' + userId);
   }
+
   saveRecipesToDatabase(recipeArray: Recipe[], selectedUser){
-    console.log(recipeArray);
     for(var i = 0; i < recipeArray.length; i++){
       selectedUser.weeklyRecipes.push(recipeArray[i]);
     }
-    console.log(selectedUser.weeklyRecipes);
     this.getUserById(selectedUser.$key).update({
       weeklyRecipes: selectedUser.weeklyRecipes
     });
+// console.log(recipeArray);
+// selectedUser.weeklyRecipes.push(recipeArray[10]);
+//
+// this.getUserById(selectedUser.$key).update({
+//   weeklyRecipes[i]: recipeArray[i]
+// });
+
 
     //
     // console.log(selectedUser.$key);

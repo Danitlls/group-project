@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { recipeId, recipeKey } from './api-keys';
 import { UserService } from './user.service';
 import { Recipe } from './recipe.model';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class RecipeService {
@@ -12,7 +13,7 @@ export class RecipeService {
   caloriesLow = 100;
   caloriesHigh = 1000;
   weekRecipes: Recipe[] = [];
-  constructor(private http: Http, private userService: UserService) { }
+  constructor(private http: Http, private userService: UserService, private database: AngularFireDatabase) { }
 
   getRecipeFromApiByIngredient(search: string, count: number){
     let random = Math.floor((Math.random() * 50) + 1);
@@ -30,36 +31,43 @@ export class RecipeService {
   }
 
   getBasicRecipesForDay(caloriesLow, caloriesHigh, count, search){
-    let random = Math.floor(Math.random() * 10);
-    // let secondRandom = random + 3;
-    let searchParam = " ";
 
-    console.log(random);
-    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId + "&app_key=" + this.RecipeKey + "&from=0&to="+ count +"&calories=gte%20" + caloriesLow + ",%20lte%20" + caloriesHigh + "&health=tree-nut-free").subscribe(response => {
-      console.log(response.json().hits);
-      let foundRecipe: Recipe;
-
-      for(let result of response.json().hits) {
-        if(result.recipe.totalNutrients.PROCNT && result.recipe.totalNutrients.FAT && result.recipe.totalNutrients.CHOCDF) {
-          let caloriesPer = (result.recipe.calories / result.recipe.yield);
-          foundRecipe = new Recipe(result.recipe.label, caloriesPer,result.recipe.totalNutrients.CHOCDF.quantity, result.recipe.totalNutrients.FAT.quantity, result.recipe.totalNutrients.PROCNT.quantity, result.recipe.url, result.recipe.image)
-          console.log(foundRecipe);
-          this.weekRecipes.push(foundRecipe);
-        }
-      }
-
-    });
+    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId + "&app_key=" + this.RecipeKey + "&from=0&to="+ count +"&calories=gte%20" + caloriesLow + ",%20lte%20" + caloriesHigh + "&health=tree-nut-free");
   }
 
-  generateWeeklyMenu(selectedUserId){
-    var ingredients: string [] = ["beef", "chicken"];
+  generateWeeklyMenu(selectedUser){
+    this.userService.getUserById(selectedUser.$key).update({
+      weeklyRecipes: []
+    });
+    var ingredients: string [] = ["ice", "milk"];
+    var count = 0;
 
     for (let ingredient of ingredients){
-      console.log(ingredient);
-      this.getBasicRecipesForDay(this.caloriesLow, this.caloriesHigh, 5, ingredient);
+      this.getBasicRecipesForDay(this.caloriesLow, this.caloriesHigh, 20, ingredient).subscribe(response => {
+        // console.log(response.json().hits);
+        let foundRecipe: Recipe;
+
+        for(let result of response.json().hits) {
+          if(result.recipe.totalNutrients.PROCNT && result.recipe.totalNutrients.FAT && result.recipe.totalNutrients.CHOCDF) {
+            let caloriesPer = (result.recipe.calories / result.recipe.yield);
+            foundRecipe = new Recipe(result.recipe.label, caloriesPer,result.recipe.totalNutrients.CHOCDF.quantity, result.recipe.totalNutrients.FAT.quantity, result.recipe.totalNutrients.PROCNT.quantity, result.recipe.url, result.recipe.image)
+            // console.log(foundRecipe);
+            this.weekRecipes.push(foundRecipe);
+          }
+          count ++;
+          console.log(count);
+          if(count === 39){
+            console.log(this.weekRecipes);
+            selectedUser.weeklyRecipes = [];
+            // this.weekRecipes = [];
+            this.userService.saveRecipesToDatabase(this.weekRecipes, selectedUser);
+          }
+        }
+      });
+
     }
+
     console.log(this.weekRecipes);
-    this.userService.saveRecipesToDatabase(this.weekRecipes, selectedUserId);
   }
 }
 
