@@ -1,5 +1,5 @@
 <!-- create new user: -->
-<form>
+<form id="create-user-form">
   <div id="login">
     <div class="">
       <label for="name">Your Name</label>
@@ -21,9 +21,12 @@
 <!-- Add new user PREFERENCES: -->
   <div id="personal">
     <div class="">
+      <!--  change to RADIO-->
       <label for="gender">Gender</label>
-      <input type="radio" value="male" name="gender" #newGender > Male
-      <input type="radio" value="female" name="gender" #newGender > Female
+      <select #newGender>
+        <option value="female"> Female</option>
+        <option value="male"> Male </option>
+      </select>
     </div>
 
     <div class="">
@@ -31,44 +34,45 @@
       <input type="number" #newAge id="user-age">
     </div>
     <div class="">
-      checkbox:
+      <!-- change to checkbox or radio: -->
       <label for="user-diet-choice">Diet</label>
       <select #newDietChoice>
-        <option>I'm Fine</option>
-        <option>Vegetarian</option>
-        <option>Vegan</option>
-        <option>Paleo</option>
-        <option>High-Fiber</option>
-        <option>High-Protein</option>
-        <option>Low-Carb</option>
-        <option>Low-Fat</option>
-        <option>Low-Sodium</option>
-        <option>Low-Sugar</option>
-        <option>Alcohol-Free</option>
-        <option>Balanced</option>
+        <option value="">I'm Fine</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+        <option value="paleo">Paleo</option>
+        <option value="high-fiber">High-Fiber</option>
+        <option value="high-protein">High-Protein</option>
+        <option value="low-carb">Low-Carb</option>
+        <option value="low-fat">Low-Fat</option>
+        <option value="low-sodium">Low-Sodium</option>
+        <option value="low-sugar">Low-Sugar</option>
+        <option value="alcohol-free">Alcohol-Free</option>
+        <option value="balanced">Balanced</option>
       </select>
     </div>
     <div class="">
+      <!-- change to checkbox: -->
       <label for="allergies">Allergies</label>
       <select #newAllergies>
-        <option>I'm Good</option>
-        <option>Peanuts</option>
-        <option>Dairy</option>
-        <option>Gluten</option>
-        <option>Shellfish</option>
-        <option>Soy</option>
-        <option>Wheat</option>
-        <option>Tree Nuts</option>
-        <option>Eggs</option>
-        <option>Fish</option>
+        <option value="">I'm Good</option>
+        <option value="peanuts">Peanuts</option>
+        <option value="dairy">Dairy</option>
+        <option value="gluten">Gluten</option>
+        <option value="shellfish">Shellfish</option>
+        <option value="soy">Soy</option>
+        <option value="wheat">Wheat</option>
+        <option value="tree nuts">Tree Nuts</option>
+        <option value="eggs">Eggs</option>
+        <option value="fish">Fish</option>
       </select>
     </div>
     <div class="">
       <label>Your Activity Level:</label><br>
       <select #newActivityLevel>
-        <option> Sedentary </option>
-        <option> Moderately Active</option>
-        <option> Active </option>
+        <option value="sedentary"> Sedentary </option>
+        <option value="moderately active"> Moderately Active</option>
+        <option value="active"> Active </option>
       </select>
     </div>
   </div>
@@ -84,9 +88,11 @@
     </div>
     <div class="">
       <label for="goal">Overall Goal</label>
-      <input type="radio" value="gain" name="goal" #newGoal > Gain Weight
-      <input type="radio" value="maintain" name="goal" #newGoal > Maintain Weight
-      <input type="radio" value="lose" name="goal" #newGoal > Lose Weight
+      <select #newGoal>
+        <option value="gain"> Gain Weight </option>
+        <option value="maintain"> Maintain Weight</option>
+        <option value="lose"> Lose Weight </option>
+      </select>
     </div>
     <div class="">
       <label for="user-goalWeight">Goal Weight</label>
@@ -101,5 +107,7 @@
       <input type="date" #newGoalDate>
     </div>
   </div>
-  <button (click)="submitForm(newName.value, newEmail.value, newLogin.value, newPassword.value, newGender.value, newAge.value, newDietChoice.value, newAllergies.value, newActivityLevel.value, newHeight.value, newWeight.value, newGoal.value, newGoalWeight.value, newStartDate.value, newGoalDate.value)">Create Account</button>
+  <button (click)="submitForm(newName.value, newEmail.value, newLogin.value, newPassword.value, newGender.value, newAge.value, newDietChoice.value, newAllergies.value, newActivityLevel.value, newHeight.value, newCurrentWeight.value, newGoal.value, newGoalWeight.value, newStartDate.value, newGoalDate.value)">Create Account</button>
 </form>
+
+<p *ngIf="newGoalDate.value">{{newGoalDate.value | amDifference: newStartDate.value :'days' : true}}</p>

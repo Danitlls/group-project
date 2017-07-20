@@ -25,8 +25,8 @@ export class User {
               public currentWeight: number,
               public goal: string,
               public goalWeight: number,
-              public goalStartDate: string,
-              public goalDate: string,
+              public goalStartDate: Date,
+              public goalDate: Date,
               public weeklyWeightGoal: number,
               public weeklyWeightChange: number
               // public timestamp: Date
