@@ -39,8 +39,9 @@ export class UserService {
   }
 
   generateMealOptions(selectedUser){
+    console.log(selectedUser.weeklyRecipes);
     let mealOptions: Recipe[] = [];
-    for(var i = 0; i < 9; i++){
+    for(var i = 0; i < 3; i++){
       let random = Math.floor(Math.random() * 30);
       mealOptions.push(selectedUser.weeklyRecipes[random]);
     }
