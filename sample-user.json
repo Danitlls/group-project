@@ -13,6 +13,20 @@
       {"fat": 65},
       {"protein": 50}
     ],
+    "weeklyRecipes": [{
+      "name": "First Meal",
+      "calories": 550,
+      "carbohydrates": 41,
+      "fat": 23,
+      "protein": 48,
+      "ingredients": [{
+        "name":"Yukon Potatoes",
+        "calories": 40,
+        "carbs": 140,
+        "fat": 20,
+        "protein": 2
+      }]
+    }],
     "bmi": 20.1,
     "planned program": [{
       "date": "07-18-2017",
