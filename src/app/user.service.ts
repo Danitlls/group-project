@@ -37,4 +37,9 @@ export class UserService {
     // console.log("save function" + this.weeklyRecipes);
     //gather array from api call and push to "weeklyRecipes" array in firebase
   }
+  generateMealOptions(selectedUser){
+    this.getUserById(selectedUser.$key).update({
+
+    })
+  }
 }

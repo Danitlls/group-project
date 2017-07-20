@@ -31,6 +31,10 @@ export class UserComponent implements OnInit {
     this.recipeService.generateWeeklyMenu(this.currentUser);
   }
 
+  getDayOptions(){
+    this.userService.generateMealOptions(this.currentUser);
+  }
+
   //REUSABLE FUNCTIONS:
 
   //generateWeeklyMenu(5 ingredients) API CALL--used when user gets created, and when user wants to update 5 available ingredients. Stores 100 recipes into database
