@@ -33,19 +33,22 @@ export const recipeKey = '787aa21c319f1baf7c80830e5d4f97cc';
 export const recipeId = '9593a6fa';
 
 export var masterFirebaseConfig = {
-  apiKey: "AIzaSyCNQadBLY7gRy9iLVZc_sgKjh3TK9sOuEU",
-  authDomain: "user-af5fa.firebaseapp.com",
-  databaseURL: "https://user-af5fa.firebaseio.com",
-  projectId: "user-af5fa",
-  storageBucket: "user-af5fa.appspot.com",
-  messagingSenderId: "836218981739"
+  apiKey: "AIzaSyCltulhiM-_iw6iFjXg9qz5raG7RHPCPiU",
+  authDomain: "recipeapi-f5baf.firebaseapp.com",
+  databaseURL: "https://recipeapi-f5baf.firebaseio.com",
+  projectId: "recipeapi-f5baf",
+  storageBucket: "",
+  messagingSenderId: "753676267532"
 }
 
 export var masterFirebaseConfig2 = {
-  apiKey: "AIzaSyCVy7eH2Dg7XgkV8ssKVsrRsBIAsIUroF0",
-  authDomain: "group-project-b6f36.firebaseapp.com",
-  databaseURL: "https://group-project-b6f36.firebaseio.com",
-  projectId: "group-project-b6f36",
-  storageBucket: "group-project-b6f36.appspot.com",
-  messagingSenderId: "436781306668"
+  apiKey: "AIzaSyDEaduy4RI1o-K0SJmit_YVNJJxjwQQjmI",
+  authDomain: "group-project-5a62d.firebaseapp.com",
+  databaseURL: "https://group-project-5a62d.firebaseio.com",
+  projectId: "group-project-5a62d",
+  storageBucket: "",
+  messagingSenderId: "463416562030"
 }
+
+epicodusfakeemail@gmail.com
+Stayfocused
