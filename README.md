@@ -29,6 +29,23 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 
 NOT OUR API KEYS:
-
 export const recipeKey = '787aa21c319f1baf7c80830e5d4f97cc';
 export const recipeId = '9593a6fa';
+
+export var masterFirebaseConfig = {
+  apiKey: "AIzaSyCNQadBLY7gRy9iLVZc_sgKjh3TK9sOuEU",
+  authDomain: "user-af5fa.firebaseapp.com",
+  databaseURL: "https://user-af5fa.firebaseio.com",
+  projectId: "user-af5fa",
+  storageBucket: "user-af5fa.appspot.com",
+  messagingSenderId: "836218981739"
+}
+
+export var masterFirebaseConfig2 = {
+  apiKey: "AIzaSyCVy7eH2Dg7XgkV8ssKVsrRsBIAsIUroF0",
+  authDomain: "group-project-b6f36.firebaseapp.com",
+  databaseURL: "https://group-project-b6f36.firebaseio.com",
+  projectId: "group-project-b6f36",
+  storageBucket: "group-project-b6f36.appspot.com",
+  messagingSenderId: "436781306668"
+}
