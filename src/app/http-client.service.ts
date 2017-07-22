@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
+import { yelpToken } from './api-keys';
 
 @Injectable()
 export class HttpClientService {
@@ -7,9 +8,7 @@ export class HttpClientService {
   constructor(private http: Http) { }
 
   createAuthorizationHeader(headers: Headers) {
-    headers.append('Authorization', 'Basic ' +
-      btoa('username:password'));
-
+    headers.append('Authorization', 'Bearer ' + yelpToken);
     }
 
   get(url) {
