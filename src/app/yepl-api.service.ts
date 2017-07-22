@@ -9,4 +9,10 @@ export class YeplApiService {
 
   constructor(private http: HttpClientService) { }
 
+  getRestaurants(term: string, location: string){
+      return this.http.get("https://api.yelp.com/v3/businesses/search?term=" + term + "&location=" + location).subscribe(response =>{
+        console.log(response.json());
+      })
+  }
+
 }
