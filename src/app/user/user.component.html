@@ -15,21 +15,21 @@
 </div>
 
 <div *ngIf="recipeOptions">
-  <select #newBreakfast>
-    <option value="{{recipeOptions[0].name}}">{{recipeOptions[0].name}}</option>
-    <option value="{{recipeOptions[1].name}}">{{recipeOptions[1].name}}</option>
-    <option value="{{recipeOptions[2].name}}">{{recipeOptions[2].name}}</option>
+  <select #newBreakfast (change)='onChange($event.target.value)'>
+    <option value="0">{{recipeOptions[0].name}}</option>
+    <option value="1">{{recipeOptions[1].name}}</option>
+    <option value="2">{{recipeOptions[2].name}}</option>
   </select>
 
-  <select #newLunch>
-    <option value="{{recipeOptions[3].name}}">{{recipeOptions[3].name}}</option>
-    <option value="{{recipeOptions[4].name}}">{{recipeOptions[4].name}}</option>
-    <option value="{{recipeOptions[5].name}}">{{recipeOptions[5].name}}</option>
+  <select #newLunch (change)='onChange($event.target.value)'>
+    <option value="3">{{recipeOptions[3].name}}</option>
+    <option value="4">{{recipeOptions[4].name}}</option>
+    <option value="5">{{recipeOptions[5].name}}</option>
   </select>
 
-  <select #newDinner>
-    <option value="{{recipeOptions[6].name}}">{{recipeOptions[6].name}}</option>
-    <option value="{{recipeOptions[7].name}}">{{recipeOptions[7].name}}</option>
-    <option value="{{recipeOptions[8].name}}">{{recipeOptions[8].name}}</option>
+  <select #newDinner (change)='onChange($event.target.value)'>
+    <option value="6">{{recipeOptions[6].name}}</option>
+    <option value="7">{{recipeOptions[7].name}}</option>
+    <option value="8">{{recipeOptions[8].name}}</option>
   </select>
 </div>

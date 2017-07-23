@@ -42,6 +42,19 @@ export class UserComponent implements OnInit {
     console.log(this.tempOptions);
   }
 
+  onChange(recipeIndex){
+    if(recipeIndex >= 0 && recipeIndex <= 2){
+      this.tempOptions[0] = this.recipeOptions[recipeIndex];
+    }
+    else if(recipeIndex >= 3 && recipeIndex <= 5){
+      this.tempOptions[1] = this.recipeOptions[recipeIndex];
+    }
+    else{
+      this.tempOptions[2] = this.recipeOptions[recipeIndex];
+    }
+    console.log(this.tempOptions);
+  }
+
   //REUSABLE FUNCTIONS:
 
   //generateWeeklyMenu(5 ingredients) API CALL--used when user gets created, and when user wants to update 5 available ingredients. Stores 100 recipes into database
