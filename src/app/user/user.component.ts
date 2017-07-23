@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
+import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { SecondRecipeService } from '../second-recipe.service';
 import { UserService } from '../user.service';
@@ -14,6 +15,8 @@ import { UserService } from '../user.service';
 export class UserComponent implements OnInit {
   userId;
   currentUser;
+  recipeOptions: Recipe[];
+  tempOptions: Recipe[] = [];
   constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
   ngOnInit() {
@@ -22,7 +25,6 @@ export class UserComponent implements OnInit {
     });
     this.userService.getUserById(this.userId).subscribe(dataLastEmittedFromObserver => {
       this.currentUser = dataLastEmittedFromObserver;
-
       console.log(this.currentUser);
     })
   }
@@ -32,7 +34,12 @@ export class UserComponent implements OnInit {
   }
 
   getDayOptions(){
-    this.userService.generateMealOptions(this.currentUser);
+    this.recipeOptions = this.userService.generateMealOptions(this.currentUser);
+    console.log(this.recipeOptions);
+    for(var i = 0, j = 0; i < 3; i++, j+=3){
+      this.tempOptions[i] = this.recipeOptions[j];
+    }
+    console.log(this.tempOptions);
   }
 
   //REUSABLE FUNCTIONS:
