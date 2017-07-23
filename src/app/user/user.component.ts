@@ -72,6 +72,7 @@ export class UserComponent implements OnInit {
     let newDay = new Day(currentDay, this.tempOptions[0], this.tempOptions[1], this.tempOptions[2], totalCalories, totalCarbs, totalFat, totalProtein);
     this.daysArray.push(newDay);
     console.log(this.daysArray);
+
   }
 
   updateDay(selectedDay: Date){
@@ -88,12 +89,20 @@ export class UserComponent implements OnInit {
       totalProtein += this.tempOptions[i].protein;
     }
     let updatedDay = new Day(selectedDay, this.tempOptions[0], this.tempOptions[1], this.tempOptions[2], totalCalories, totalCarbs, totalFat, totalProtein);
-    for(var i = 0; i < this.daysArray.length; i++){
-      if(this.daysArray[i].date === selectedDay){
-        console.log(this.daysArray[i]);
-        this.daysArray[i] = updatedDay;
-        console.log(this.daysArray[i]);
+    if(this.daysArray.length !== 0){
+      for(var i = 0; i < this.daysArray.length; i++){
+        if(this.daysArray[i].date === selectedDay){
+          console.log(this.daysArray[i]);
+          this.daysArray[i] = updatedDay;
+          console.log(this.daysArray[i]);
+        }
+        else{
+          confirm("No Day Plan to Update, Please choose Add New to Create a new plan");
+        }
       }
+    }
+    else{
+      alert("Please select Add New Day to start your planning");
     }
     console.log(this.daysArray);
   }
