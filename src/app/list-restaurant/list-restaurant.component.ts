@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { YeplApiService } from '../yepl-api.service';
-// import { HttpClientService } from '../http-client.service';
+import { HttpClientService } from '../http-client.service';
 
 
 @Component({
   selector: 'app-list-restaurant',
   templateUrl: './list-restaurant.component.html',
   styleUrls: ['./list-restaurant.component.sass'],
-  providers: [YeplApiService]
+  providers: [YeplApiService, HttpClientService]
 })
 
 export class ListRestaurantComponent implements OnInit {
