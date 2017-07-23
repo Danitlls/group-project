@@ -16,6 +16,10 @@ export class UserService {
     return this.database.object('users/' + userId);
   }
 
+  getDayByDate(dayId: number, userId: number){
+    return this.database.object('users/userId/planned program/' + dayId);
+  }
+
   saveRecipesToDatabase(recipeArray: Recipe[], selectedUser){
     for(var i = 0; i < recipeArray.length; i++){
       selectedUser.weeklyRecipes.push(recipeArray[i]);
@@ -47,4 +51,5 @@ export class UserService {
     }
     return mealOptions;
   }
+
 }
