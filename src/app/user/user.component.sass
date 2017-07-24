@@ -1,10 +1,31 @@
 @import "../abstracts"
 
+nav
+  background-color: hotpink
+
+  @extend %flex
+  justify-content: flex-end
+  a
+    color: white
+li
+  text-align: right
+
 section
   padding: 20px
-  background-color: $color-accent
+  background-color: #f7f5f4
   text-align: center
 
   button
     @extend %save-button
     margin-bottom: 20px
+
+.status-image, .weather
+  text-align: center
+  // width: 400px
+  margin: 0 auto
+  overflow: hidden
+  height: 200px
+
+.weather
+  height: 90px
+  margin: 20px
