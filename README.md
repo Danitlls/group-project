@@ -52,3 +52,5 @@ export var masterFirebaseConfig2 = {
 
 epicodusfakeemail@gmail.com
 Stayfocused
+
+https://valor-software.com/ng2-charts/
