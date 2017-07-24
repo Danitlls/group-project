@@ -14,6 +14,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { UserComponent } from './user/user.component';
 import { NewUserFormComponent } from './new-user-form/new-user-form.component';
 import { ListRestaurantComponent } from './list-restaurant/list-restaurant.component';
+import { MealFormComponent } from './meal-form/meal-form.component';
+import { DisplayMealComponent } from './display-meal/display-meal.component';
 
 
 export const firebaseConfig = {
@@ -37,7 +39,9 @@ export const firebaseConfig = {
     RecipeFormComponent,
     NewUserFormComponent,
     UserComponent,
-    ListRestaurantComponent
+    ListRestaurantComponent,
+    MealFormComponent,
+    DisplayMealComponent
   ],
   imports: [
     BrowserModule,
