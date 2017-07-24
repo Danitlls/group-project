@@ -34,16 +34,23 @@ export class RecipeService {
     return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId + "&app_key=" + this.RecipeKey + "&from=0&to="+ count +"&calories=gte%200,%20lte%20" + caloriesHigh + "&health=tree-nut-free");
   }
 
-  generateWeeklyMenu(selectedUser){
+  generateWeeklyMenu(selectedUser, ingredients){
     console.log(typeof(selectedUser.dailyNutrition[0].calories));
     let calorieLimitPerMeal: number = Math.floor(selectedUser.dailyNutrition[0].calories / 3);
     this.userService.getUserById(selectedUser.$key).update({
       weeklyRecipes: []
     });
-    var ingredients: string [] = ["beef", "turkey"];
+    var fiveOptions;
+    for(var i = 0; i < ingredients.length; i++){
+      if(!(ingredients[i])){
+        ingredients.splice(i);
+        fiveOptions = ingredients;
+        console.log("fiveOptions: " + fiveOptions);
+      }
+    }
     var count = 0;
     console.log(calorieLimitPerMeal);
-    for (let ingredient of ingredients){
+    for (let ingredient of fiveOptions){
       this.getBasicRecipesForDay(calorieLimitPerMeal, 20, ingredient).subscribe(response => {
         // console.log(response.json().hits);
         let foundRecipe: Recipe;
@@ -67,7 +74,6 @@ export class RecipeService {
       });
 
     }
-
     console.log(this.weekRecipes);
   }
 }

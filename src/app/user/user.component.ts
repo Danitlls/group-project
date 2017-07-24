@@ -30,9 +30,9 @@ export class UserComponent implements OnInit {
     })
   }
 
-  getWeeklyMenu(){
-    this.recipeService.generateWeeklyMenu(this.currentUser);
-  }
+  // getWeeklyMenu(){
+  //   this.recipeService.generateWeeklyMenu(this.currentUser);
+  // }
 
 
 

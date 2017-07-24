@@ -35,6 +35,13 @@ export class MealFormComponent implements OnInit {
     console.log(this.tempOptions);
   }
 
+  getWeeklyMenu(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5){
+    let ingredients: string[] = [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5];
+    console.log(ingredients);
+    this.recipeService.generateWeeklyMenu(this.currentUser, ingredients);
+    this.getDayOptions();
+  }
+
   onChange(recipeIndex){
     if(recipeIndex >= 0 && recipeIndex <= 2){
       this.tempOptions[0] = this.recipeOptions[recipeIndex];
