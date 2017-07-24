@@ -16,6 +16,10 @@ export class UserService {
     return this.database.object('users/' + userId);
   }
 
+  getDayByDate(dayId: number, userId: number){
+    return this.database.object('users/userId/planned program/' + dayId);
+  }
+
   saveRecipesToDatabase(recipeArray: Recipe[], selectedUser){
     for(var i = 0; i < recipeArray.length; i++){
       selectedUser.weeklyRecipes.push(recipeArray[i]);
@@ -39,13 +43,13 @@ export class UserService {
   }
 
   generateMealOptions(selectedUser){
-    console.log(selectedUser.weeklyRecipes);
+    // console.log(selectedUser.weeklyRecipes);
     let mealOptions: Recipe[] = [];
-    for(var i = 0; i < 3; i++){
+    for(var i = 0; i < 9; i++){
       let random = Math.floor(Math.random() * 30);
       mealOptions.push(selectedUser.weeklyRecipes[random]);
     }
-    console.log(mealOptions);
     return mealOptions;
   }
+
 }

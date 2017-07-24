@@ -13,3 +13,56 @@
     <h2></h2>
   </div>
 </div>
+<div>
+  <label for="dateChoice">Day to Plan</label>
+  <input type="date" #newDate>
+</div>
+<div *ngIf="recipeOptions">
+  <select #newBreakfast (change)='onChange($event.target.value)'>
+    <option value="0">{{recipeOptions[0].name}}</option>
+    <option value="1">{{recipeOptions[1].name}}</option>
+    <option value="2">{{recipeOptions[2].name}}</option>
+  </select>
+
+  <select #newLunch (change)='onChange($event.target.value)'>
+    <option value="3">{{recipeOptions[3].name}}</option>
+    <option value="4">{{recipeOptions[4].name}}</option>
+    <option value="5">{{recipeOptions[5].name}}</option>
+  </select>
+
+  <select #newDinner (change)='onChange($event.target.value)'>
+    <option value="6">{{recipeOptions[6].name}}</option>
+    <option value="7">{{recipeOptions[7].name}}</option>
+    <option value="8">{{recipeOptions[8].name}}</option>
+  </select>
+</div>
+
+<button (click)="newDay(newDate.value)">Add New Day Meal</button>
+
+
+
+<div>
+  <label for="dateChoice">Find Meal Plan by Date</label>
+  <input type="date" #findDate>
+</div>
+<div *ngIf="recipeOptions">
+  <select #newBreakfast (change)='onChange($event.target.value)'>
+    <option value="0">{{recipeOptions[0].name}}</option>
+    <option value="1">{{recipeOptions[1].name}}</option>
+    <option value="2">{{recipeOptions[2].name}}</option>
+  </select>
+
+  <select #newLunch (change)='onChange($event.target.value)'>
+    <option value="3">{{recipeOptions[3].name}}</option>
+    <option value="4">{{recipeOptions[4].name}}</option>
+    <option value="5">{{recipeOptions[5].name}}</option>
+  </select>
+
+  <select #newDinner (change)='onChange($event.target.value)'>
+    <option value="6">{{recipeOptions[6].name}}</option>
+    <option value="7">{{recipeOptions[7].name}}</option>
+    <option value="8">{{recipeOptions[8].name}}</option>
+  </select>
+</div>
+
+<button (click)="updateDay(findDate.value)">Update a Day</button>
