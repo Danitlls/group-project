@@ -4,7 +4,6 @@ import { UserService } from '../user.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as moment from 'moment';
 
-
 @Component({
   selector: 'app-new-user-form',
   templateUrl: './new-user-form.component.html',
@@ -44,10 +43,8 @@ export class NewUserFormComponent implements OnInit {
     return userBMR * activityLevel;
   }
 
-
   submitForm(name: string, email: string, login: string, password: string, gender: string, age: number, dietChoice: string, allergies: string, activityLevel: number, height: number, currentWeight: number, goal: string, goalWeight: number, goalStartDate: Date, goalDate: Date, weeklyWeightGoal: number, weeklyWeightChange: number)
   {
-
     var userBMI = this.BMICalc(currentWeight, height);
     var userBMR = this.BMRCalc(currentWeight, height, gender, age);
     var dateDifference = this.dateDifferenceCalc(goalDate, goalStartDate);
