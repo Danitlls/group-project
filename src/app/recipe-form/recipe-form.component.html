@@ -1,11 +1,13 @@
-<form>
-  <div class="form-group">
-    <label for="search">Search by food:</label>
-    <input #search>
-  </div>
-  <button (click)='getRecipes(search.value)'>Get Recipes</button>
-  <!-- <button (click)='triggerSaveRecipes(search.value)'>Save Recipes</button> -->
-</form>
+<section>
+  <form>
+    <div class="form-group">
+      <label for="search">Search by food:</label>
+      <input #search>
+    </div>
+    <button (click)='getRecipes(search.value)'>Get Recipes</button>
+    <!-- <button (click)='triggerSaveRecipes(search.value)'>Save Recipes</button> -->
+  </form>
+</section>
 
 <!-- <div *ngIf=“tempRecipes.length>0”>
 	<div *ngFor=“let tempRecipe of tempRecipes”>

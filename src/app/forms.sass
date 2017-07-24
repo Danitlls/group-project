@@ -1,0 +1,83 @@
+// .form-group
+//   text-align: center
+@import "./app/abstracts"
+
+form
+  @extend %flex
+  flex-direction: column
+  align-self: center
+  padding: 30px 5%
+  width: 90%
+  border: 1px solid black
+
+input, textarea
+  display: block
+  height: 30px
+  width: 80%
+  margin: 2px  auto 20px
+  border-radius: 5px
+  border: 1px solid #2a7e86
+  background-color: #fdfdfc
+
+textarea
+  height: 100px
+  width: 100%
+
+label
+  margin-top: 30px
+
+// #new-campaign
+//   width: 800px
+//   text-align: right
+//   display: flex
+//   flex-direction: column
+//   align-items: center
+//   // border: 1px solid black
+//   div
+//     width: 100%
+//     text-align: center
+//     // border: 1px solid red
+//     label
+//       // margin: 0 auto
+//
+//       width: 95%
+//       text-align: right
+//
+//     label:first-of-type, label:nth-of-type(4)
+//       input
+//         padding: 10px 30px
+//         width: 30px
+//         margin-left: 50px
+//     textarea
+//       width: 80%
+//     h4
+//       font-size: 25px
+//       font-weight: bold
+//   .radioButtonContainer
+//     display: flex
+//     flex-wrap: wrap
+//     align-items: center
+//     width: 300px
+//     h4
+//       flex-basis: 100%
+//     label, input
+//       flex-basis: 16%
+//     @include large-bp
+//       width: 100%
+//       padding: 20px
+//       label, input
+//         flex-basis: 10%
+//   .radioButtonContainer:first-of-type
+//     h4
+//       flex-basis: 100%
+//     label, input
+//       flex-basis: 8%
+//     @include large-bp
+//       width: 100%
+
+select
+  width: 80%
+  margin-left: 10%
+  height: 30px
+  font-size: 15px
+  margin-bottom: 10px

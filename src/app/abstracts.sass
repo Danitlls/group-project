@@ -1,0 +1,44 @@
+// Variables:
+//Fonts:
+$font-main: sans-serif
+// $titles-font:
+$font-buttons: sans-serif
+
+// Style Colors:
+    //purple
+$color-primary: #9185e8
+// $color-secondary: lighten( $color-primary , 10%)
+          //yellow:
+$color-accent: #f9e879
+
+//fonts color:
+$font-color-main: #f9e879
+$font-color-secondary: #ecf0f1
+
+//button colors:
+$button-ok-color: #89eab5
+$button-no-color: #f53974
+
+
+// for forms:
+%save-button
+  font-family: $font-buttons
+  font-size: 16px
+  color: white
+  letter-spacing: 2px
+  text-transform: uppercase
+  border: 0
+  background-color: $button-ok-color
+  padding: 20px 30px
+  transition: background-color .3s
+  cursor: pointer
+  &:after
+    transition: border-top-color .3s
+  &:hover
+    background-color: darken($button-ok-color, 15%)
+  &:hover:after
+    border-top-color: lighten($button-ok-color, 15%)
+
+%flex
+  display: flex
+  justify-content: center

@@ -1,2 +1,14 @@
 #create-user-form
-  
+@import "../abstracts"
+// @import "../forms"
+
+section
+  @extend %flex
+  padding: 20px
+  background-color: $color-accent
+
+  form
+    label
+      padding-left: 40px
+    button
+      @extend %save-button
