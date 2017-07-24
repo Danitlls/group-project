@@ -1,0 +1,60 @@
+
+
+
+
+<div>
+  <input #newIngredient1 placeholder="Ingredient1">
+  <input #newIngredient2 placeholder="Ingredient2">
+  <!-- <div *ngIf="add button is clicked">
+
+  </div>
+  <div *ngIf="add button is clicked">
+    <input #newIngredient3 placeholder="Ingredient3">
+  </div>
+  <div *ngIf="add button is clicked">
+    <input #newIngredient4 placeholder="Ingredient4">
+  </div>
+  <div *ngIf="add button is clicked">
+    <input #newIngredient5 placeholder="Ingredient5">
+  </div>
+  <button>Add another ingredient</button> -->
+  <button (click)='getWeeklyMenu(newIngredient1.value, newIngredient2.value)'>Generate Random Menu</button>
+</div>
+
+<p>
+  <button (click)='getDayOptions()'>Refresh</button>
+</p>
+
+<div>
+  <label for="dateChoice">Day to Plan</label>
+  <input type="date" #newDate>
+</div>
+<div *ngIf="recipeOptions">
+  <select #newBreakfast (change)='onChange($event.target.value)'>
+    <option value="0">{{recipeOptions[0].name}}</option>
+    <option value="1">{{recipeOptions[1].name}}</option>
+    <option value="2">{{recipeOptions[2].name}}</option>
+  </select>
+
+  <select #newLunch (change)='onChange($event.target.value)'>
+    <option value="3">{{recipeOptions[3].name}}</option>
+    <option value="4">{{recipeOptions[4].name}}</option>
+    <option value="5">{{recipeOptions[5].name}}</option>
+  </select>
+
+  <select #newDinner (change)='onChange($event.target.value)'>
+    <option value="6">{{recipeOptions[6].name}}</option>
+    <option value="7">{{recipeOptions[7].name}}</option>
+    <option value="8">{{recipeOptions[8].name}}</option>
+  </select>
+</div>
+
+<div *ngIf="!daysArray[0]">
+  <button (click)="newDay(newDate.value)">Add New Day Meal</button>
+</div>
+
+<div *ngIf="daysArray[0]">
+  <button (click)="updateDay(newDate.value)">Update a Day</button>
+</div>
+
+<app-display-meal [currentUser]="currentUser" [daysArray]="daysArray"></app-display-meal>
