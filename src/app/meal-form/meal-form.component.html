@@ -5,30 +5,50 @@
     <input type="date" #newDate>
   </div>
   <h3>To plan your meals, let us know some ingredients you want our options to have:</h3>
-  <div>
-    <input #newIngredient1 placeholder="Ingredient1">
-    <input #newIngredient2 placeholder="Ingredient2">
-    <!-- <div *ngIf="add button is clicked">
-
-    </div>
-    <div *ngIf="add button is clicked">
-      <input #newIngredient3 placeholder="Ingredient3">
-    </div>
-    <div *ngIf="add button is clicked">
-      <input #newIngredient4 placeholder="Ingredient4">
-    </div>
-    <div *ngIf="add button is clicked">
-      <input #newIngredient5 placeholder="Ingredient5">
-    </div>
-    <button>Add another ingredient</button> -->
-    <button (click)='getWeeklyMenu(newIngredient1.value, newIngredient2.value)'>Generate Menu</button>
+<div>
+  <input #newIngredient1 placeholder="Ingredient1">
+  <input #newIngredient2 placeholder="Ingredient2">
+  <input #newIngredient3 placeholder="Ingredient3">
+  <input #newIngredient4 placeholder="Ingredient4">
+  <input #newIngredient5 placeholder="Ingredient4">
+  <button (click)='getWeeklyMenu(newIngredient1.value, newIngredient2.value, newIngredient3.value, newIngredient4.value, newIngredient5.value)'>Generate Random Menu</button>
+  <!-- <button (click)='showMore()'>Add another ingredient</button> -->
+  <!-- <div *ngIf="fifth">
+    <input #newIngredient5 placeholder="Ingredient5">
   </div>
+  <div *ngIf="!fifth && third && fourth">
+    <button (click)='showFifth()'>Add another ingredient</button>
+  </div> -->
+  <!-- <div *ngIf="newIngredient3.value">
+    <p>{{newIngredient3.value}}</p>
+  </div> -->
+  <!-- <input #newIngredient1 placeholder="Ingredient1">
+  <input #newIngredient2 placeholder="Ingredient2">
+  <div *ngIf="options>0">
+    <input #newIngredient3 placeholder="Ingredient3">
+    <button (click)='getWeeklyMenu(newIngredient1.value, newIngredient2.value, newIngredient3.value)'>Generate Random Menu</button>
+    <div *ngIf="options>1">
+      <input #newIngredient4 placeholder="Ingredient4">
+      <button (click)='getWeeklyMenu(newIngredient1.value, newIngredient2.value, newIngredient3.value, newIngredient4.value)'>Generate Random Menu</button>
+      <p *ngIf="options>2">
+        <input #newIngredient5 placeholder="Ingredient4">
+        <button (click)='getWeeklyMenu(newIngredient1.value, newIngredient2.value, newIngredient3.value, newIngredient4.value, newIngredient5.value)'>Generate Random Menu</button>
+      </p>
+    </div>
+
+  </div>
+  <button (click)='showMore()'>Add another ingredient</button> -->
+
+</div>
 
   <p>
     <button (click)='getDayOptions()'>Refresh</button>
   </p>
 
-
+<div>
+  <label for="dateChoice">Day to Plan</label>
+  <input type="date" #newDate>
+</div>
   <div *ngIf="recipeOptions">
     <select #newBreakfast (change)='onChange($event.target.value)'>
       <option value="0">{{recipeOptions[0].name}}</option>
