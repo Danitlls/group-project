@@ -32,6 +32,7 @@ NOT OUR API KEYS:
 export const recipeKey = '787aa21c319f1baf7c80830e5d4f97cc';
 export const recipeId = '9593a6fa';
 
+//Jun's firebase
 export var masterFirebaseConfig = {
   apiKey: "AIzaSyCltulhiM-_iw6iFjXg9qz5raG7RHPCPiU",
   authDomain: "recipeapi-f5baf.firebaseapp.com",
@@ -40,7 +41,7 @@ export var masterFirebaseConfig = {
   storageBucket: "",
   messagingSenderId: "753676267532"
 }
-
+//epicodusfakeemail firebase
 export var masterFirebaseConfig2 = {
   apiKey: "AIzaSyDEaduy4RI1o-K0SJmit_YVNJJxjwQQjmI",
   authDomain: "group-project-5a62d.firebaseapp.com",

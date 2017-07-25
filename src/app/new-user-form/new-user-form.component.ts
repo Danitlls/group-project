@@ -3,6 +3,8 @@ import { User } from '../user.model';
 import { UserService } from '../user.service';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-new-user-form',
@@ -11,8 +13,9 @@ import * as moment from 'moment';
   providers: [ UserService ]
 })
 export class NewUserFormComponent implements OnInit {
+  userId;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) {  }
 
   ngOnInit() {
   }
@@ -43,6 +46,7 @@ export class NewUserFormComponent implements OnInit {
     return userBMR * activityLevel;
   }
 
+
   submitForm(name: string, email: string, login: string, password: string, gender: string, age: number, dietChoice: string, allergies: string, activityLevel: number, height: number, currentWeight: number, goal: string, goalWeight: number, goalStartDate: Date, goalDate: Date, weeklyWeightGoal: number, weeklyWeightChange: number)
   {
     var userBMI = this.BMICalc(currentWeight, height);
@@ -67,6 +71,19 @@ export class NewUserFormComponent implements OnInit {
 
     //change it so you can push more than one...
     newUser.allergies.push(allergies);
-    console.log(newUser);
+    // console.log(newUser);
+    this.userService.addUserToDB(newUser).subscribe(response =>{
+      this.userId = response[response.length - 1].$key;
+      // var newKey = response[response.length - 1].$key);
+      // console.log(response.length - 1);
+      // this.currentUser = this.userService.getUserId(response.$key);
+      this.router.navigate(['user/profile/'+ this.userId]);
+    });
+
+// .then(this.router.navigate(['user-profile/'+ this.userService.getUserId()]));
+    // getUserId(this.user.userId);
+
+
+
   }
 }
