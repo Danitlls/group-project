@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-charts',
@@ -7,10 +8,18 @@ import { ChartsModule } from 'ng2-charts';
   styleUrls: ['./charts.component.sass']
 })
 export class ChartsComponent implements OnInit {
+  @Input() mealLog;
+    dataPlan: number = 400;
+    dataFact: number = 600;
+  // dataPlan: number[] = [];
+  // dataFact: number[] = [];
+  constructor(public recipeService: RecipeService) { }
+
   public barChartOptions:any = {
       scaleShowVerticalLines: false,
       responsive: true
     };
+
     public barChartLabels:string[] = ['Day1', 'Day3', 'Day3', 'Day4', 'Day5', 'Day6', 'Day7'];
     public barChartType:string = 'bar';
     public barChartLegend:boolean = true;
@@ -19,19 +28,26 @@ export class ChartsComponent implements OnInit {
     private barChartColors: any[] = [{ backgroundColor: ["#b8436d", "#00d9f9", "#00d9f9"] }];
 
     public barChartData:any[] = [
-      {data: [657], label: 'Planed Calories'},
-      {data: [281], label: 'Actual Caroies'}
+      {data: [this.dataFact], label: 'Planed Calories'},
+      {data: [this.dataPlan], label: 'Actual Caroies'}
     ];
 
     // events
     public chartClicked(e:any):void {
-      console.log(e);
+
     }
 
     public chartHovered(e:any):void {
       console.log(e);
     }
 
+    // startUpdateGraph(){
+    //   let test = this.recipeService.updateGraph(this.daysArray, this.loggedDaysArray);
+    //   this.dataPlan.push(test[0]);
+    //   this.dataFact.push(test[1]);
+    //   console.log(this.dataPlan[0]);
+    //   console.log(this.dataFact[0]);
+    // }
     // public randomize():void {
     //   // Only Change 3 values
     //   let data = [
@@ -53,6 +69,13 @@ export class ChartsComponent implements OnInit {
     //    */
     // }
   ngOnInit() {
+    let final = this.recipeService.updateGraph(this.mealLog);
+    this.dataPlan = final[0];
+    this.dataFact = final[1];
+  }
+
+  update(){
+
   }
 
 }

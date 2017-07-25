@@ -3,9 +3,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Recipe } from '../recipe.model';
 import { Day } from '../day.model';
-import { RecipeService } from '../recipe.service';
 import { SecondRecipeService } from '../second-recipe.service';
 import { UserService } from '../user.service';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-meal-log',
@@ -16,6 +16,8 @@ import { UserService } from '../user.service';
 export class MealLogComponent implements OnInit {
   mealLog: Recipe[];
   firstRecipe;
+  dataPlan: number[];
+  dataFact: number[];
   constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
   ngOnInit() {
@@ -34,5 +36,11 @@ export class MealLogComponent implements OnInit {
 
   logDay(){
     this.recipeService.createDayMeals();
+    // // let test =
+    // // this.dataPlan = test[0];
+    // // this.dataFact = test[1];
+    // console.log("logDay function " + test);
   }
+
+
 }
