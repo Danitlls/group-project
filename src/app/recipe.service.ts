@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { recipeId, recipeKey } from './api-keys';
+import { recipeId, recipeKey, nutritionId, nutritionKey } from './api-keys';
 import { UserService } from './user.service';
 import { Recipe } from './recipe.model';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -10,6 +10,8 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 export class RecipeService {
   RecipeId = recipeId;
   RecipeKey = recipeKey;
+  NutritionId = nutritionId;
+  NutritionKey = nutritionKey;
   caloriesLow = 100;
   caloriesHigh = 1000;
   weekRecipes: Recipe[] = [];
@@ -27,6 +29,12 @@ export class RecipeService {
         foundRecipe = new Recipe(result.recipe.label, caloriesPer, result.recipe.totalNutrients.CHOCDF.quantity, result.recipe.totalNutrients.FAT.quantity, result.recipe.totalNutrients.PROCNT.quantity, result.recipe.url, result.recipe.image)
         console.log(foundRecipe);
       }
+    });
+  }
+
+  analyzeMeal(search: string){
+    return this.http.get("https://api.edamam.com/api/nutrition-data?app_id=" + this.NutritionId + "&app_key=" + this.NutritionKey + "&ingr=" + search).subscribe(response => {
+      console.log(response.json());
     });
   }
 
@@ -84,6 +92,8 @@ export class RecipeService {
       });
     }
   }
+
+
 }
 
 //   saveRecipes(search: string){
