@@ -20,6 +20,7 @@ export class MealFormComponent implements OnInit {
   tempOptions: Recipe[] = [];
   daysArray: Day[] = [];
   loggedDaysArray: Day[] = [];
+  options: number = 0;
 
   constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
@@ -27,17 +28,18 @@ export class MealFormComponent implements OnInit {
   }
 
   getDayOptions(){
+    console.log(this.currentUser);
     this.recipeOptions = this.userService.generateMealOptions(this.currentUser);
-    console.log(this.recipeOptions);
+    console.log("test");
     for(var i = 0, j = 0; i < 3; i++, j+=3){
       this.tempOptions[i] = this.recipeOptions[j];
     }
-    console.log(this.tempOptions);
+    // console.log("test" + this.tempOptions);
   }
 
   getWeeklyMenu(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5){
     let ingredients: string[] = [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5];
-    console.log(ingredients);
+    // console.log(ingredients);
     this.recipeService.generateWeeklyMenu(this.currentUser, ingredients);
     this.getDayOptions();
   }
@@ -73,7 +75,7 @@ export class MealFormComponent implements OnInit {
 
   updateDay(selectedDay: Date){
     console.log(selectedDay);
-    console.log(this.daysArray.length);
+    // console.log(this.daysArray.length);
     let totalCalories: number = 0;
     let totalCarbs: number = 0;
     let totalFat: number = 0;
@@ -101,5 +103,9 @@ export class MealFormComponent implements OnInit {
       alert("Please select Add New Day to start your planning");
     }
     console.log(this.daysArray);
+  }
+
+  showMore(){
+    this.options += 1;
   }
 }
