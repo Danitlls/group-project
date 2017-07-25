@@ -26,7 +26,7 @@
   <div class="current-plan">
     <p>Your goal is: {{currentUser.goal}}<</p>
     <p>We want you to reach your goal by: {{currentUser.goalDate}}</p>
-    <p>Daily caloric intake: {{currentUser.caloricIntake}}</p>
+    <p>Recomended daily caloric intake: {{currentUser.caloricIntake}}</p>
   </div>
 
   <p>
@@ -39,8 +39,15 @@
 
   <!-- <app-display-meal></app-display-meal> -->
 
+  <!-- use yelp api to find restaurants -->
   <app-list-restaurant></app-list-restaurant>
+
+  <h3>Graphs.. make a component</h3>
+  <app-charts></app-charts>
+
+  <!-- use yelp api to find random recipes -->
   <app-recipe-form></app-recipe-form>
+
   <!-- <div class="menu">
   <div class="menuItem" *ngFor="">
   <div class="menuImage">
@@ -50,7 +57,5 @@
 </div>
 </div> -->
 
-  <h3>Graphs.. make a component</h3>
 
-    <app-charts></app-charts>
 </section>

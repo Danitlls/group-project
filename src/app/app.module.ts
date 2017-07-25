@@ -11,10 +11,10 @@ import { masterFirebaseConfig,
 } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { UserComponent } from './user/user.component';
 import { NewUserFormComponent } from './new-user-form/new-user-form.component';
 import { ListRestaurantComponent } from './list-restaurant/list-restaurant.component';
-import { LoginComponent } from './login/login.component';
 import { MealFormComponent } from './meal-form/meal-form.component';
 import { DisplayMealComponent } from './display-meal/display-meal.component';
 import { ChartsComponent } from './charts/charts.component';
@@ -46,7 +46,6 @@ export const firebaseConfig = {
     NewUserFormComponent,
     UserComponent,
     ListRestaurantComponent,
-    LoginComponent,
     MealFormComponent,
     DisplayMealComponent,
     ChartsComponent
@@ -60,7 +59,8 @@ export const firebaseConfig = {
     // AngularFireModule.initializeApp(firebaseConfig2),
     AngularFireDatabaseModule,
     MomentModule,
-    ChartsModule
+    ChartsModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
