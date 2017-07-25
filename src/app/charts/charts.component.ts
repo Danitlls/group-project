@@ -19,8 +19,8 @@ export class ChartsComponent implements OnInit {
     private barChartColors: any[] = [{ backgroundColor: ["#b8436d", "#00d9f9", "#00d9f9"] }];
 
     public barChartData:any[] = [
-      {data: [657, 597, 808, 817, 568, 559, 405], label: 'Planed Calories'},
-      {data: [281, 481, 402, 194, 865, 276, 906], label: 'Actual Caroies'}
+      {data: [657], label: 'Planed Calories'},
+      {data: [281], label: 'Actual Caroies'}
     ];
 
     // events

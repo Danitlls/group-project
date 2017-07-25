@@ -18,6 +18,7 @@ export class RecipeService {
   weekRecipes: Recipe[] = [];
   firstRecipe = new Recipe("fake", 0,0,0,0,"fake", "fake");
   loggedRecipes: Recipe[] = [this.firstRecipe];
+  daysArray: Day[] = [];
   constructor(private http: Http, private userService: UserService, private database: AngularFireDatabase) { }
 
   getRecipeFromApiByIngredient(search: string, count: number){
@@ -82,6 +83,9 @@ export class RecipeService {
 
     let loggedDay = new Day(new Date ("07-21-2017"), this.loggedRecipes[1], this.loggedRecipes[2], this.loggedRecipes[3], totalCalories, totalCarbs, totalFats, totalProtein);
     console.log(loggedDay);
+    this.daysArray.push(loggedDay);
+    console.log(this.daysArray);
+    this.loggedRecipes= [this.firstRecipe];
     return loggedDay;
   }
 
