@@ -15,6 +15,7 @@ export class RecipeService {
   caloriesLow = 100;
   caloriesHigh = 1000;
   weekRecipes: Recipe[] = [];
+  loggedRecipes: Recipe[] = [];
   constructor(private http: Http, private userService: UserService, private database: AngularFireDatabase) { }
 
   getRecipeFromApiByIngredient(search: string, count: number){
@@ -31,15 +32,23 @@ export class RecipeService {
       }
     });
   }
-
+//1 cup of apples, 1 whole chicken, 1 cup of rice
   analyzeMeal(search: string){
-    return this.http.get("https://api.edamam.com/api/nutrition-data?app_id=" + this.NutritionId + "&app_key=" + this.NutritionKey + "&ingr=" + search).subscribe(response => {
-      console.log(response.json());
-    });
+    return this.http.get("https://api.edamam.com/api/nutrition-data?app_id=" + this.NutritionId + "&app_key=" + this.NutritionKey + "&ingr=" + search);
   }
 
   getBasicRecipesForDay(caloriesHigh, count, search){
     return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId + "&app_key=" + this.RecipeKey + "&from=0&to="+ count +"&calories=gte%200,%20lte%20" + caloriesHigh + "&health=tree-nut-free");
+  }
+
+  logMeal(search){
+    this.analyzeMeal(search).subscribe(response => {
+      let loggedRecipe: Recipe;
+      let result = response.json();
+      console.log(result);
+      loggedRecipe = new Recipe("Meal Log", result.calories, result.totalNutrients.CHOCDF.quantity, result.totalNutrients.FAT.quantity, result.totalNutrients.PROCNT.quantity, "none", "none");
+      this.loggedRecipes.push(loggedRecipe);
+    });
   }
 
   generateWeeklyMenu(selectedUser, ingredients){

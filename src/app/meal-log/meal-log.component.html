@@ -1,1 +1,2 @@
-<button (click)='getNutrition()'>GET NUTRITION FACTS</button>
+<input #newMeal placeholder="List your meal here">
+<button (click)='getNutrition(newMeal.value)'>Log This Meal</button>

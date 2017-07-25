@@ -14,14 +14,16 @@ import { UserService } from '../user.service';
   providers: [RecipeService, SecondRecipeService, UserService]
 })
 export class MealLogComponent implements OnInit {
-
+  firstRecipe;
   constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
   ngOnInit() {
   }
 
-  getNutrition(){
-    let search: string = "1 large apple";
-    this.recipeService.analyzeMeal(search);
+  getNutrition(search: string){
+    let inputString = search.replace(/,/g, '%20and')
+    console.log(inputString);
+    this.firstRecipe = this.recipeService.logMeal(inputString);
+    console.log(this.recipeService.loggedRecipes);
   }
 }
