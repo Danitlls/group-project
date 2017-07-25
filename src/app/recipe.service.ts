@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { recipeId, recipeKey, nutritionId, nutritionKey } from './api-keys';
 import { UserService } from './user.service';
 import { Recipe } from './recipe.model';
+import { Day } from './day.model';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
@@ -15,7 +16,8 @@ export class RecipeService {
   caloriesLow = 100;
   caloriesHigh = 1000;
   weekRecipes: Recipe[] = [];
-  loggedRecipes: Recipe[] = [];
+  firstRecipe = new Recipe("fake", 0,0,0,0,"fake", "fake");
+  loggedRecipes: Recipe[] = [this.firstRecipe];
   constructor(private http: Http, private userService: UserService, private database: AngularFireDatabase) { }
 
   getRecipeFromApiByIngredient(search: string, count: number){
@@ -43,12 +45,44 @@ export class RecipeService {
 
   logMeal(search){
     this.analyzeMeal(search).subscribe(response => {
-      let loggedRecipe: Recipe;
       let result = response.json();
+      let carbs: number;
+      let fats: number;
+      let protein: number;
+      if(!(result.totalNutrients.CHOCDF)){
+        carbs = 0;
+      }
+      else{
+        carbs = result.totalNutrients.CHOCDF.quantity;
+      }
+      if(!(result.totalNutrients.FAT)){
+        fats = 0;
+      }
+      else{
+        fats = result.totalNutrients.FAT.quantity;
+      }
+      if(!(result.totalNutrients.PROCNT)){
+        protein = 0;
+      }
+      else{
+        protein = result.totalNutrients.PROCNT.quantity;
+      }
+      let loggedRecipe: Recipe;
       console.log(result);
-      loggedRecipe = new Recipe("Meal Log", result.calories, result.totalNutrients.CHOCDF.quantity, result.totalNutrients.FAT.quantity, result.totalNutrients.PROCNT.quantity, "none", "none");
+      loggedRecipe = new Recipe("Meal Log", result.calories, carbs, fats, protein, "none", "none");
       this.loggedRecipes.push(loggedRecipe);
     });
+  }
+
+  createDayMeals(){
+    let totalCalories = this.loggedRecipes[1].calories + this.loggedRecipes[2].calories + this.loggedRecipes[3].calories;
+    let totalCarbs = this.loggedRecipes[1].carbs + this.loggedRecipes[2].carbs + this.loggedRecipes[3].carbs;
+    let totalFats = this.loggedRecipes[1].fat + this.loggedRecipes[2].fat + this.loggedRecipes[3].fat;
+    let totalProtein = this.loggedRecipes[1].protein + this.loggedRecipes[2].protein + this.loggedRecipes[3].protein;
+
+    let loggedDay = new Day(new Date ("07-21-2017"), this.loggedRecipes[1], this.loggedRecipes[2], this.loggedRecipes[3], totalCalories, totalCarbs, totalFats, totalProtein);
+    console.log(loggedDay);
+    return loggedDay;
   }
 
   generateWeeklyMenu(selectedUser, ingredients){

@@ -14,6 +14,7 @@ import { UserService } from '../user.service';
   providers: [RecipeService, SecondRecipeService, UserService]
 })
 export class MealLogComponent implements OnInit {
+  mealLog: Recipe[];
   firstRecipe;
   constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
@@ -22,8 +23,16 @@ export class MealLogComponent implements OnInit {
 
   getNutrition(search: string){
     let inputString = search.replace(/,/g, '%20and')
-    console.log(inputString);
     this.firstRecipe = this.recipeService.logMeal(inputString);
-    console.log(this.recipeService.loggedRecipes);
+    this.mealLog = this.recipeService.loggedRecipes;
+    console.log(this.mealLog[0]);
+    console.log(this.mealLog[1]);
+    console.log(this.mealLog[2]);
+    console.log(this.mealLog);
+    // console.log(this.recipeService.createDayMeals());
+  }
+
+  logDay(){
+    this.recipeService.createDayMeals();
   }
 }
