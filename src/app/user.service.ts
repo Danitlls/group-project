@@ -30,9 +30,10 @@ export class UserService {
   }
 
   saveRecipesToDatabase(recipeArray: Recipe[], selectedUser){
-    for(var i = 0; i < recipeArray.length; i++){
-      selectedUser.weeklyRecipes.push(recipeArray[i]);
-    }
+    // for(var i = 0; i < recipeArray.length; i++){
+    //   selectedUser.weeklyRecipes.push(recipeArray[i]);
+    // }
+    selectedUser.weeklyRecipes = recipeArray;
     this.getUserById(selectedUser.$key).update({
       weeklyRecipes: selectedUser.weeklyRecipes
     });

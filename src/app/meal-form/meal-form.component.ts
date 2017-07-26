@@ -39,6 +39,7 @@ export class MealFormComponent implements OnInit {
   }
 
   getWeeklyMenu(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5){
+    this.weekRecipes = [];
     let ingredients: string[] = [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5];
     this.recipeService.clearUserWeeklyRecipes(this.currentUser);
     var userIngredients = this.recipeService.createArrayWithOnlyUserIngredients(ingredients);
