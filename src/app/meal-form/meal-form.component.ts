@@ -18,8 +18,8 @@ export class MealFormComponent implements OnInit {
   @Input() currentUser;
   recipeOptions: Recipe[];
   tempOptions: Recipe[] = [];
-  daysArray: Day[] = [];
-  loggedDaysArray: Day[] = [];
+  daysArray: Day[] = []; //planned
+  loggedDaysArray: Day[] = []; //actual
   options: number = 0;
   weekRecipes: Recipe[] = [];
 
