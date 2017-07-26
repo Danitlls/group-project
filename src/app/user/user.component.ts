@@ -24,9 +24,9 @@ export class UserComponent implements OnInit {
     this.route.params.forEach((urlParametersArray) => {
       this.userId = urlParametersArray['id'];
     });
-    this.userService.getUserById(this.userId).subscribe(dataLastEmittedFromObserver => {
-      this.currentUser = dataLastEmittedFromObserver;
-      console.log(this.currentUser);
+    this.userService.getUserById(this.userId).subscribe(response => {
+      this.currentUser = response;
+      // console.log(this.currentUser);
     })
   }
 

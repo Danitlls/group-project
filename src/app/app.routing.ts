@@ -11,11 +11,11 @@ const appRoutes: Routes = [
     component: RecipeFormComponent
   },
   {
-    path: 'new-user',
+    path: 'user',
     component: NewUserFormComponent
   },
   {
-    path: 'user-profile/:id',
+    path: 'user/profile/:id',
     component: UserComponent
   },
   {
