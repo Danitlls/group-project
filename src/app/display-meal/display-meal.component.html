@@ -11,45 +11,49 @@
 
   <h2>This is your meal plan: {{currentUser.goal}} weight</h2>
   <div class="plan">
-    <div class="">
+    <div class="food-card">
+      <h2>Breakfast</h2>
       <h3>{{daysArray[0].breakfast.name}}</h3>
       <div class="food-photo">
         <img src='{{daysArray[0].breakfast.image}}' alt="">
       </div>
       <h4>Nutrition Facts</h4>
       <ul>
-        <li>{{daysArray[0].breakfast.calories}}</li>
-        <li>{{daysArray[0].breakfast.carbs}}</li>
-        <li>{{daysArray[0].breakfast.fat}}</li>
-        <li>{{daysArray[0].breakfast.protein}}</li>
+        <li style="background-image: url('src/covering.png')">{{daysArray[0].breakfast.calories}}</li>
+        <!-- <li class="background-image: url('src/covering.png')">{{daysArray[0].breakfast.calories}}</li> -->
+        <li style="background-image: url('src/biscuit.png')">{{daysArray[0].breakfast.carbs}}</li>
+        <li style="background-image: url('src/donut.png')">{{daysArray[0].breakfast.fat}}</li>
+        <li style="background-image: url('src/egg.png')">{{daysArray[0].breakfast.protein}}</li>
       </ul>
       <a href="{{daysArray[0].breakfast.link}}">Open Recipe</a>
     </div>
-    <div class="">
+    <div class="food-card">
+      <h2>Lunch</h2>
       <h3>{{daysArray[0].lunch.name}}</h3>
       <div class="food-photo">
         <img src='{{daysArray[0].lunch.image}}' alt="">
       </div>
       <h4>Nutrition Facts</h4>
       <ul>
-        <li>{{daysArray[0].lunch.calories}}</li>
-        <li>{{daysArray[0].lunch.carbs}}</li>
-        <li>{{daysArray[0].lunch.fat}}</li>
-        <li>{{daysArray[0].lunch.protein}}</li>
+        <li style="background-image: url('src/covering.png')">{{daysArray[0].lunch.calories}}</li>
+        <li style="background-image: url('src/biscuit.png')">{{daysArray[0].lunch.carbs}}</li>
+        <li style="background-image: url('src/donut.png')">{{daysArray[0].lunch.fat}}</li>
+        <li style="background-image: url('src/egg.png')">{{daysArray[0].lunch.protein}}</li>
       </ul>
       <a href="{{daysArray[0].lunch.link}}">Open Recipe</a>
     </div>
-    <div class="">
+    <div class="food-card">
+      <h2>Dinner</h2>
       <h3>{{daysArray[0].dinner.name}}</h3>
       <div class="food-photo">
         <img src='{{daysArray[0].dinner.image}}' alt="">
       </div>
       <h4>Nutrition Facts</h4>
       <ul>
-        <li>{{daysArray[0].dinner.calories}}</li>
-        <li>{{daysArray[0].dinner.carbs}}</li>
-        <li>{{daysArray[0].dinner.fat}}</li>
-        <li>{{daysArray[0].dinner.protein}}</li>
+        <li style="background-image: url('src/covering.png')">{{daysArray[0].dinner.calories}}</li>
+        <li style="background-image: url('src/biscuit.png')">{{daysArray[0].dinner.carbs}}</li>
+        <li style="background-image: url('src/donut.png')">{{daysArray[0].dinner.fat}}</li>
+        <li style="background-image: url('src/egg.png')">{{daysArray[0].dinner.protein}}</li>
       </ul>
       <a href="{{daysArray[0].dinner.link}}">Open Recipe</a>
     </div>

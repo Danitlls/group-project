@@ -64,7 +64,7 @@ export class MealFormComponent implements OnInit {
       for(let result of response.json().hits) {
         if(result.recipe.totalNutrients.PROCNT && result.recipe.totalNutrients.FAT && result.recipe.totalNutrients.CHOCDF) {
           let caloriesPer = (result.recipe.calories / result.recipe.yield);
-          foundRecipe = new Recipe(result.recipe.label, caloriesPer,result.recipe.totalNutrients.CHOCDF.quantity, result.recipe.totalNutrients.FAT.quantity, result.recipe.totalNutrients.PROCNT.quantity, result.recipe.url, result.recipe.image)
+          foundRecipe = new Recipe(result.recipe.label, Math.floor(caloriesPer),Math.floor(result.recipe.totalNutrients.CHOCDF.quantity), Math.floor(result.recipe.totalNutrients.FAT.quantity), Math.floor(result.recipe.totalNutrients.PROCNT.quantity), result.recipe.url, result.recipe.image)
           // console.log(foundRecipe);
           this.weekRecipes.push(foundRecipe);
         }

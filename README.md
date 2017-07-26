@@ -55,3 +55,6 @@ epicodusfakeemail@gmail.com
 Stayfocused
 
 https://valor-software.com/ng2-charts/
+
+export const nutritionKey = 'f42b9f80be8daa73945e30d1c5e0c3a2';
+export const nutritionId = 'd6710f55';
