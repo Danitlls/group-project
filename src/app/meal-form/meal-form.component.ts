@@ -44,7 +44,7 @@ export class MealFormComponent implements OnInit {
     var userIngredients = this.recipeService.createArrayWithOnlyUserIngredients(ingredients);
     // console.log(userIngredients);
 
-    let calorieLimitPerMeal: number = Math.floor(this.currentUser.dailyNutrition[0].calories);
+    let calorieLimitPerMeal: number = Math.floor(this.currentUser.caloricIntake);
     var count = 1;
     for (let ingredient of userIngredients){
       // console.log(this.recipeService.getBasicRecipesForDay(calorieLimitPerMeal, 20, ingredient));

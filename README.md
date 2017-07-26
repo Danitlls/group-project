@@ -41,6 +41,7 @@ export var masterFirebaseConfig = {
   messagingSenderId: "753676267532"
 }
 
+epicodusfakeemail firebase
 export var masterFirebaseConfig2 = {
   apiKey: "AIzaSyDEaduy4RI1o-K0SJmit_YVNJJxjwQQjmI",
   authDomain: "group-project-5a62d.firebaseapp.com",

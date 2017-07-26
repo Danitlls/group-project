@@ -11,7 +11,7 @@ const appRoutes: Routes = [
     component: RecipeFormComponent
   },
   {
-    path: 'user',
+    path: 'new-user',
     component: NewUserFormComponent
   },
   {
