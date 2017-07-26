@@ -30,6 +30,9 @@ export class UserComponent implements OnInit {
     })
   }
 
+  // getCurrentUser(){
+  //   this.currentUser = this.userService.findUser(login);
+  // }
   // getWeeklyMenu(){
   //   this.recipeService.generateWeeklyMenu(this.currentUser);
   // }

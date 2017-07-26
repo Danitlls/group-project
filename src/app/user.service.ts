@@ -7,9 +7,22 @@ import { ActivatedRoute, Params } from '@angular/router';
 @Injectable()
 export class UserService {
   users: FirebaseListObservable<any[]>;
+  allUsers: User[];
 
   constructor(private database: AngularFireDatabase, private route: ActivatedRoute) {    this.users = database.list('users');
     // this.weeklyRecipes = database.list('users/0/weeklyRecipes');
+  this.users.subscribe(response => {
+    this.allUsers = response;
+    console.log(this.allUsers);
+    });
+  }
+
+  findUser(){
+    for(var i = 0; i < this.allUsers.length; i++){
+      if(this.allUsers[i].login === "dani123"){
+        return this.allUsers[i]
+      }
+    }
   }
 
   getUserId() {
@@ -26,7 +39,6 @@ export class UserService {
 
   getDayByDate(dayId: number, userId: number){
     return this.database.object('users/' + userId + '/planned program/' + dayId);
-
   }
 
   saveRecipesToDatabase(recipeArray: Recipe[], selectedUser){
