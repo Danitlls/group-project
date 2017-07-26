@@ -15,12 +15,8 @@
     "goalDate": "08-19-2017",
     "weeklyWeightGoal": 1,
     "weeklyWeightChange": 0.3,
-    "dailyNutrition": [
-      {"calories": 2000},
-      {"carbs": 304},
-      {"fat": 65},
-      {"protein": 50}
-    ],
+    "caloricIntake": 2000,
+
     "bmi": 20.1,
     "Planned program": [],
     "Actual Program": []

@@ -45,10 +45,10 @@
     <button (click)='getDayOptions()'>Refresh</button>
   </p>
 
-<div>
+<!-- <div>
   <label for="dateChoice">Day to Plan</label>
   <input type="date" #newDate>
-</div>
+</div> -->
   <div *ngIf="recipeOptions">
     <select #newBreakfast (change)='onChange($event.target.value)'>
       <option value="0">{{recipeOptions[0].name}}</option>
@@ -70,7 +70,7 @@
   </div>
 
   <div *ngIf="!daysArray[0]">
-    <button class="done"(click)="newDay(newDate.value)">I like this plan!</button>
+    <button class="done" (click)="newDay(newDate.value)">I like this plan!</button>
   </div>
 
   <div *ngIf="daysArray[0]">
