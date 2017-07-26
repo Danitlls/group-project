@@ -1,4 +1,5 @@
 <!-- from demo https://github.com/valor-software/ng2-charts/blob/development/demo/src/app/components/charts/bar-chart-demo.html -->
+<button (click)="update()">Update Graph</button>
 <div>
   <div style="display: block">
     <canvas baseChart
@@ -11,7 +12,8 @@
             (chartHover)="chartHovered($event)"
             (chartClick)="chartClicked($event)"></canvas>
   </div>
-  <!-- <button (click)="randomize()">Update</button> -->
+  <button (click)="randomize()">Update</button>
 </div>
+<!-- <button (click)="randomize()">Update</button> -->
 
 <!-- // donut.html <base-chart class="chart" // ... [colors]="doughnutChartColors" // ... </base-chart> -->

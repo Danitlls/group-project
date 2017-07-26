@@ -1,4 +1,4 @@
 <input #newMeal placeholder="List your meal here">
 <button (click)='getNutrition(newMeal.value)'>Log This Meal</button>
 <button (click)='logDay()'>Log Day</button>
-<app-charts [mealLog]="mealLog"></app-charts>
+<app-charts [mealLog]="mealLog" [daysArray]="daysArray"></app-charts>

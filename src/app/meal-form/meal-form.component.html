@@ -69,9 +69,9 @@
     </select>
   </div>
 
-  <div *ngIf="!daysArray[0]">
+  <!-- <div *ngIf="!daysArray[0] || !daysArray[1]"> -->
     <button class="done"(click)="newDay(newDate.value)">I like this plan!</button>
-  </div>
+  <!-- </div> -->
 
   <div *ngIf="daysArray[0]">
     <button (click)="updateDay(newDate.value)">Update a Day</button>
@@ -79,6 +79,6 @@
 
   <app-display-meal [currentUser]="currentUser" [daysArray]="daysArray"></app-display-meal>
 
-  <app-meal-log></app-meal-log>
-  
+  <app-meal-log [daysArray]="daysArray"></app-meal-log>
+
 </div>
