@@ -42,3 +42,20 @@ $button-no-color: #f53974
 %flex
   display: flex
   justify-content: center
+
+
+//Breakpoints
+$mediumBp: 'screen and (min-width: 700px)'
+$largeBp: 'screen and (min-width: 1000px)'
+$categoryInlineBp: 'screen and (min-width: 1100px)'
+$navFlexBp: 'screen and (min-width: 1180px)'
+$xLargeBp: 'screen and (min-width: 1580px)'
+
+//MediaQueries:
+@mixin medium-bp
+  @media #{$mediumBp}
+    @content
+
+@mixin large-bp
+  @media #{$largeBp}
+    @content

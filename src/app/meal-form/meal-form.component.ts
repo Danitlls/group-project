@@ -22,10 +22,17 @@ export class MealFormComponent implements OnInit {
   loggedDaysArray: Day[] = []; //actual
   options: number = 0;
   weekRecipes: Recipe[] = [];
+  showForm: boolean = true;
 
   constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  toggleForm(){
+    if(this.showForm){
+      this.showForm = false;
+    }
   }
 
   getDayOptions(){
