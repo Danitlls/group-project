@@ -21,6 +21,7 @@ export class MealFormComponent implements OnInit {
   daysArray: Day[] = [];
   loggedDaysArray: Day[] = [];
   options: number = 0;
+  weekRecipes: Recipe[] = [];
 
   constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
@@ -39,10 +40,44 @@ export class MealFormComponent implements OnInit {
 
   getWeeklyMenu(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5){
     let ingredients: string[] = [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5];
-    // console.log(ingredients);
-    this.recipeService.generateWeeklyMenu(this.currentUser, ingredients);
-    this.getDayOptions();
+    this.recipeService.clearUserWeeklyRecipes(this.currentUser);
+    var userIngredients = this.recipeService.createArrayWithOnlyUserIngredients(ingredients);
+    // console.log(userIngredients);
+
+    let calorieLimitPerMeal: number = Math.floor(this.currentUser.dailyNutrition[0].calories);
+    var count = 1;
+    for (let ingredient of userIngredients){
+      // console.log(this.recipeService.getBasicRecipesForDay(calorieLimitPerMeal, 20, ingredient));
+      this.recipeService.getBasicRecipesForDay(calorieLimitPerMeal, 20, ingredient).subscribe(response => {
+      console.log("meal component: ", response.json().hits);
+      let foundRecipe: Recipe;
+
+
+      for(let result of response.json().hits) {
+        if(result.recipe.totalNutrients.PROCNT && result.recipe.totalNutrients.FAT && result.recipe.totalNutrients.CHOCDF) {
+          let caloriesPer = (result.recipe.calories / result.recipe.yield);
+          foundRecipe = new Recipe(result.recipe.label, caloriesPer,result.recipe.totalNutrients.CHOCDF.quantity, result.recipe.totalNutrients.FAT.quantity, result.recipe.totalNutrients.PROCNT.quantity, result.recipe.url, result.recipe.image)
+          // console.log(foundRecipe);
+          this.weekRecipes.push(foundRecipe);
+        }
+        // console.log("week recipes ", this.weekRecipes);
+        count ++;
+        // console.log(count);
+        if(count === (20 * userIngredients.length)){
+          this.currentUser.weeklyRecipes = [];
+          this.userService.saveRecipesToDatabase(this.weekRecipes, this.currentUser);
+          console.log("inside if statement: " + this.currentUser.weekRecipes);
+        }
+      }
+    //   //
+    //   //
+      this.getDayOptions();
+    //
+    // });
+
+    });
   }
+}
 
   onChange(recipeIndex){
     if(recipeIndex >= 0 && recipeIndex <= 2){
