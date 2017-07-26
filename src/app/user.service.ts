@@ -43,7 +43,7 @@ export class UserService {
   }
 
   generateMealOptions(selectedUser){
-    // console.log("length: " + );
+    console.log("length: ", selectedUser.weeklyRecipes.length );
     let mealOptions: Recipe[] = [];
     for(var i = 0; i < 9; i++){
       let random = Math.floor(Math.random() * selectedUser.weeklyRecipes.length);

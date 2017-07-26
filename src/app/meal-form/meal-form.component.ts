@@ -42,16 +42,16 @@ export class MealFormComponent implements OnInit {
     let ingredients: string[] = [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5];
     this.recipeService.clearUserWeeklyRecipes(this.currentUser);
     var userIngredients = this.recipeService.createArrayWithOnlyUserIngredients(ingredients);
-    console.log(userIngredients);
+    // console.log(userIngredients);
 
     let calorieLimitPerMeal: number = Math.floor(this.currentUser.dailyNutrition[0].calories);
-
+    var count = 1;
     for (let ingredient of userIngredients){
-      console.log(this.recipeService.getBasicRecipesForDay(calorieLimitPerMeal, 20, ingredient));
+      // console.log(this.recipeService.getBasicRecipesForDay(calorieLimitPerMeal, 20, ingredient));
       this.recipeService.getBasicRecipesForDay(calorieLimitPerMeal, 20, ingredient).subscribe(response => {
-      console.log("meal component: " + response.json().hits);
+      console.log("meal component: ", response.json().hits);
       let foundRecipe: Recipe;
-      var count = 1;
+
 
       for(let result of response.json().hits) {
         if(result.recipe.totalNutrients.PROCNT && result.recipe.totalNutrients.FAT && result.recipe.totalNutrients.CHOCDF) {
@@ -60,6 +60,7 @@ export class MealFormComponent implements OnInit {
           // console.log(foundRecipe);
           this.weekRecipes.push(foundRecipe);
         }
+        // console.log("week recipes ", this.weekRecipes);
         count ++;
         // console.log(count);
         if(count === (20 * userIngredients.length)){
@@ -70,7 +71,7 @@ export class MealFormComponent implements OnInit {
       }
     //   //
     //   //
-    //   // this.getDayOptions();
+      this.getDayOptions();
     //
     // });
 
