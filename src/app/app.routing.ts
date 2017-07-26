@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     component: NewUserFormComponent
   },
   {
-    path: 'user-profile/:id',
+    path: 'user/profile/:id',
     component: UserComponent
   },
   {

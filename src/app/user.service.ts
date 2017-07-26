@@ -2,14 +2,22 @@ import { Injectable } from '@angular/core';
 import { User } from './user.model';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Recipe } from './recipe.model';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Injectable()
 export class UserService {
   users: FirebaseListObservable<any[]>;
 
-  constructor(private database: AngularFireDatabase) {
-    this.users = database.list('users');
+  constructor(private database: AngularFireDatabase, private route: ActivatedRoute) {    this.users = database.list('users');
     // this.weeklyRecipes = database.list('users/0/weeklyRecipes');
+  }
+
+  getUserId() {
+    var userId;
+    this.route.params.forEach((urlParametersArray) => {
+      userId = urlParametersArray['id'];
+    });
+    return userId;
   }
 
   getUserById(userId: string){
@@ -17,7 +25,8 @@ export class UserService {
   }
 
   getDayByDate(dayId: number, userId: number){
-    return this.database.object('users/userId/planned program/' + dayId);
+    return this.database.object('users/' + userId + '/planned program/' + dayId);
+
   }
 
   saveRecipesToDatabase(recipeArray: Recipe[], selectedUser){
@@ -42,8 +51,13 @@ export class UserService {
     //gather array from api call and push to "weeklyRecipes" array in firebase
   }
 
+  addUserToDB(newUser: User){
+    this.users.push(newUser);
+    return this.users;
+  }
+
   generateMealOptions(selectedUser){
-    // console.log("length: " + );
+    console.log("length: ", selectedUser.weeklyRecipes.length );
     let mealOptions: Recipe[] = [];
     for(var i = 0; i < 9; i++){
       let random = Math.floor(Math.random() * selectedUser.weeklyRecipes.length);

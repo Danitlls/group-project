@@ -91,55 +91,33 @@ export class RecipeService {
     return loggedDay;
   }
 
-  generateWeeklyMenu(selectedUser, ingredients){
-    console.log("here");
-    let calorieLimitPerMeal: number = Math.floor(selectedUser.dailyNutrition[0].calories);
+  //This function clears userRecipes in User object
+  clearUserWeeklyRecipes(selectedUser){
     this.userService.getUserById(selectedUser.$key).update({
       weeklyRecipes: []
     });
-    var fiveOptions: string[];
+  }
+  //Inputs ingredients array with 5 elements and outputs array with length equal to number of ingredients user inputted
+  createArrayWithOnlyUserIngredients(ingredients){
+    var userIngredients: string[];
     for(var i = 0; i < 5; i++){
       console.log(ingredients[i]);
-        if(!(ingredients[i])){
-          ingredients.splice(i);
-          fiveOptions = ingredients;
-          console.log("fiveOptions: " + fiveOptions);
-          i = 5;
-        }
-        else if(ingredients[4]){
-          fiveOptions = ingredients;
-          console.log("fiveOptions: " + fiveOptions);
-
-        }
+      if(!(ingredients[i])){
+        ingredients.splice(i);
+        userIngredients = ingredients;
+        console.log("userIngredients: " + userIngredients);
+        i = 5;
+      }
+      else if(ingredients[4]){
+        userIngredients = ingredients;
+        console.log("userIngredients: " + userIngredients);
+      }
     }
-    var count = 0;
-    var testCounter = 1;
-    console.log(calorieLimitPerMeal);
-    for (let ingredient of fiveOptions){
-      this.getBasicRecipesForDay(calorieLimitPerMeal, 20, ingredient).subscribe(response => {
-        // console.log(response.json().hits);
-        let foundRecipe: Recipe;
+    return userIngredients;
+  }
 
-        for(let result of response.json().hits) {
-          if(result.recipe.totalNutrients.PROCNT && result.recipe.totalNutrients.FAT && result.recipe.totalNutrients.CHOCDF) {
-            let caloriesPer = (result.recipe.calories / result.recipe.yield);
-            foundRecipe = new Recipe(result.recipe.label, caloriesPer,result.recipe.totalNutrients.CHOCDF.quantity, result.recipe.totalNutrients.FAT.quantity, result.recipe.totalNutrients.PROCNT.quantity, result.recipe.url, result.recipe.image)
-            // console.log(foundRecipe);
-            this.weekRecipes.push(foundRecipe);
-          }
-          count ++;
-          console.log(count);
-          if(count === (19 * fiveOptions.length)){
-            selectedUser.weeklyRecipes = [];
-            this.userService.saveRecipesToDatabase(this.weekRecipes, selectedUser);
-          }
-          testCounter += 1;
-          if (testCounter === (20 * fiveOptions.length)){
-            console.log("subscribe loop");
-          }
-        }
-      });
-    }
+  getBasicRecipesForDay(caloriesHigh, count, search){
+    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId + "&app_key=" + this.RecipeKey + "&from=0&to="+ count +"&calories=gte%200,%20lte%20" + caloriesHigh + "&health=tree-nut-free");
   }
 
   updateGraph(planned){
@@ -151,8 +129,6 @@ export class RecipeService {
     return this.final;
   }
 
-}
-
 //   saveRecipes(search: string){
 //
 //     return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=" + random + "&to=" + secondRandom + "&calories=gte%20591,%20lte%20722")
@@ -163,4 +139,4 @@ export class RecipeService {
 //         console.log(foundRecipe);
 //     }
 //
-// }
+}
