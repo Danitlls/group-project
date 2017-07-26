@@ -21,6 +21,7 @@ import { ChartsComponent } from './charts/charts.component';
 //charts
 import { ChartsModule } from 'ng2-charts';
 import { MealLogComponent } from './meal-log/meal-log.component';
+import { WeatherComponent } from './weather/weather.component';
 
 
 
@@ -51,7 +52,8 @@ export const firebaseConfig = {
     MealFormComponent,
     DisplayMealComponent,
     ChartsComponent,
-    MealLogComponent
+    MealLogComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
