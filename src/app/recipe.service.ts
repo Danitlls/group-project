@@ -116,10 +116,6 @@ export class RecipeService {
     return userIngredients;
   }
 
-  getBasicRecipesForDay(caloriesHigh, count, search){
-    return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId + "&app_key=" + this.RecipeKey + "&from=0&to="+ count +"&calories=gte%200,%20lte%20" + caloriesHigh + "&health=tree-nut-free");
-  }
-
   updateGraph(planned){
     console.log(this.weekRecipes);
     console.log(planned);
