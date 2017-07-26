@@ -20,6 +20,7 @@ import { DisplayMealComponent } from './display-meal/display-meal.component';
 import { ChartsComponent } from './charts/charts.component';
 //charts
 import { ChartsModule } from 'ng2-charts';
+import { MealLogComponent } from './meal-log/meal-log.component';
 
 
 
@@ -49,7 +50,8 @@ export const firebaseConfig = {
     LoginComponent,
     MealFormComponent,
     DisplayMealComponent,
-    ChartsComponent
+    ChartsComponent,
+    MealLogComponent
   ],
   imports: [
     BrowserModule,

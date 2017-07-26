@@ -110,7 +110,7 @@
         <label for="user-goalDate">Goal Date</label>
         <input type="date" #newGoalDate>
       </div>
-      <!-- <input #dateDifference value="{{newGoalDate.value | amDifference: newStartDate.value :'days' : true}}"> -->
+      <input class="hide" #dateDifference value="{{newGoalDate.value | amDifference: newStartDate.value :'days' : true}}">
       <!-- {{newGoalDate.value | amDifference: newStartDate.value :'days' : true}} -->
     </div>
 
