@@ -11,7 +11,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { UserComponent } from './user/user.component';
 import { NewUserFormComponent } from './new-user-form/new-user-form.component';
-import { ListRestaurantComponent } from './list-restaurant/list-restaurant.component';
 import { LoginComponent } from './login/login.component';
 import { MealFormComponent } from './meal-form/meal-form.component';
 import { DisplayMealComponent } from './display-meal/display-meal.component';
@@ -21,9 +20,6 @@ import { ChartsModule } from 'ng2-charts';
 import { MealLogComponent } from './meal-log/meal-log.component';
 import { WeatherComponent } from './weather/weather.component';
 
-
-
-
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
   authDomain: masterFirebaseConfig.authDomain,
@@ -31,13 +27,6 @@ export const firebaseConfig = {
   storageBucket: masterFirebaseConfig.storageBucket
 };
 
-//
-// export const firebaseConfig2 = {
-//   apiKey: masterFirebaseConfig2.apiKey,
-//   authDomain: masterFirebaseConfig2.authDomain,
-//   databaseURL: masterFirebaseConfig2.databaseURL,
-//   storageBucket: masterFirebaseConfig2.storageBucket
-// };
 
 @NgModule({
   declarations: [
@@ -45,7 +34,6 @@ export const firebaseConfig = {
     RecipeFormComponent,
     NewUserFormComponent,
     UserComponent,
-    ListRestaurantComponent,
     LoginComponent,
     MealFormComponent,
     DisplayMealComponent,
@@ -59,7 +47,6 @@ export const firebaseConfig = {
     HttpModule,
     routing,
     AngularFireModule.initializeApp(firebaseConfig),
-    // AngularFireModule.initializeApp(firebaseConfig2),
     AngularFireDatabaseModule,
     MomentModule,
     ChartsModule

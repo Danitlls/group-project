@@ -62,18 +62,12 @@ export class NewUserFormComponent implements OnInit {
       var weeklyGoal = (currentWeight - goalWeight)/dateDifference;
     }
 
-    // console.log(userBMI + " and " + userBMR);
-
     var newUser = new User(name, email, login, password, gender, age, dietChoice, activityLevel, height, currentWeight, goal, goalWeight, goalStartDate, goalDate, userBMI, userBMR, dateDifference, caloricIntake, weeklyGoal);
 
     //change it so you can push more than one...
     newUser.allergies.push(allergies);
-    // console.log(newUser);
     this.userService.addUserToDB(newUser).subscribe(response =>{
        this.userId = response[response.length - 1].$key;
-       // var newKey = response[response.length - 1].$key);
-       // console.log(response.length - 1);
-       // this.currentUser = this.userService.getUserId(response.$key);
        this.router.navigate(['user/profile/'+ this.userId]);
      });
 

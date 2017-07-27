@@ -4,11 +4,11 @@ import { UserComponent } from './user/user.component';
 import { NewUserFormComponent } from './new-user-form/new-user-form.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { LoginComponent } from './login/login.component';
-import { ListRestaurantComponent } from './list-restaurant/list-restaurant.component';
+
 const appRoutes: Routes = [
   {
     path: '',
-    component: RecipeFormComponent
+    component: LoginComponent
   },
   {
     path: 'new-user',
@@ -17,14 +17,6 @@ const appRoutes: Routes = [
   {
     path: 'user/profile/:id',
     component: UserComponent
-  },
-  {
-    path: 'restaurants',
-    component: ListRestaurantComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
   }
 ]
 

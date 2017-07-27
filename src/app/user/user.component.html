@@ -1,13 +1,6 @@
 
 <nav>
   <a>X</a>
-  <!-- <ul>
-    <li><a href="#">Edit profile</a></li>
-    <li><a href="#">Change Goal</a></li>
-    <li><a href="#">Plan a Day </a></li>
-    <li><a href="#">Find a Recipe</a></li>
-    <li><a href="#">Find a Restaurant</a></li>
-  </ul> -->
   <div class="logo">
     <img src="src/logo.png" alt="">
   </div>
@@ -20,36 +13,15 @@
 </div>
 
 <section>
-  <h5>07/23/2017...make dinamic</h5>
-  <h3>Welcome back {{currentUser.name}}</h3>
+  <h3>Welcome {{currentUser.name}}</h3>
 
   <app-weather></app-weather>
 
   <div class="current-plan">
     <p>Your goal weight: {{currentUser.goalWeight}} lbs</p>
-    <p>We want you to reach your goal by: {{currentUser.goalDate}}</p>
-    <p>Daily caloric intake: {{currentUser.caloricIntake}}</p>
+    <p>Lets accomplish this by: {{goalDate}}</p>
+    <p>Recommended Daily Caloric Intake: {{totalCalories}}</p>
   </div>
 
-  <p>
-    <!-- <button (click)='getWeeklyMenu()'>Weekly menu</button> -->
-
-  </p>
-
   <app-meal-form [currentUser]="currentUser"></app-meal-form>
-
-
-  <!-- <app-display-meal></app-display-meal> -->
-
-  <!-- <div class="menu">
-  <div class="menuItem" *ngFor="">
-  <div class="menuImage">
-  <img src="" alt="">
-</div>
-<h2></h2>
-</div>
-</div> -->
-
-
-
 </section>

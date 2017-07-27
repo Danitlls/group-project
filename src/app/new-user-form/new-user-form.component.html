@@ -1,4 +1,3 @@
-<!-- create new user: -->
 <h2>Create new account:</h2>
 <section>
   <form id="create-user-form">
@@ -20,10 +19,8 @@
         <input #newPassword id="user-password">
       </div>
     </div><hr>
-    <!-- Add new user PREFERENCES: -->
     <div id="personal">
       <div class="">
-        <!--  change to RADIO-->
         <label for="gender">Gender</label><br>
         <select #newGender>
           <option value="female"> Female</option>
@@ -36,7 +33,6 @@
         <input type="number" #newAge id="user-age">
       </div>
       <div class="">
-        <!-- change to checkbox or radio: -->
         <label for="user-diet-choice">Diet</label><br>
         <select #newDietChoice>
           <option value="">I'm Fine</option>
@@ -54,7 +50,6 @@
         </select>
       </div>
       <div class="">
-        <!-- change to checkbox: -->
         <label for="allergies">Allergies</label><br>
         <select #newAllergies>
           <option value="">I'm Good</option>
@@ -88,7 +83,6 @@
         <input type="number" #newCurrentWeight>
       </div>
     </div><hr>
-    <!-- create new Goal: -->
     <div id="goal">
       <div class="">
         <label for="goal">Overall Goal</label>
@@ -111,7 +105,6 @@
         <input type="date" #newGoalDate>
       </div>
       <input class="hide" #dateDifference value="{{newGoalDate.value | amDifference: newStartDate.value :'days' : true}}">
-      <!-- {{newGoalDate.value | amDifference: newStartDate.value :'days' : true}} -->
     </div>
 
     <button (click)="submitForm(newName.value, newEmail.value, newLogin.value, newPassword.value, newGender.value, newAge.value, newDietChoice.value, newAllergies.value, newActivityLevel.value, newHeight.value, newCurrentWeight.value, newGoal.value, newGoalWeight.value, newStartDate.value, newGoalDate.value, dateDifference.value)">Create Account</button>

@@ -17,6 +17,12 @@ import { UserService } from '../user.service';
 export class UserComponent implements OnInit {
   userId;
   currentUser;
+  goal;
+  goalDate;
+  totalCalories;
+  // currentUserDate: string = this.currentUser.goalDate.toDateString();
+  // newDate = new Date(this.currentUser.goal);
+  // currentDate = this.newDate.toDateString();
 
   constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
@@ -26,34 +32,18 @@ export class UserComponent implements OnInit {
     });
     this.userService.getUserById(this.userId).subscribe(response => {
       this.currentUser = response;
-      // console.log(this.currentUser);
+      let date = new Date(this.currentUser.goalDate);
+      this.goalDate = date.toDateString();
+      this.totalCalories = Math.floor(this.currentUser.caloricIntake);
+      if(this.currentUser.goal === "gain"){
+        this.goal = "Gain Weight";
+      }
+      else if(this.currentUser.goal === "lose"){
+        this.goal = "Lose Weight";
+      }
+      else {
+        this.goal = "Maintain Weight"
+      }
     })
   }
-
-  // getCurrentUser(){
-  //   this.currentUser = this.userService.findUser(login);
-  // }
-  // getWeeklyMenu(){
-  //   this.recipeService.generateWeeklyMenu(this.currentUser);
-  // }
-
-
-
-  //REUSABLE FUNCTIONS:
-
-  //generateWeeklyMenu(5 ingredients) API CALL--used when user gets created, and when user wants to update 5 available ingredients. Stores 100 recipes into database
-
-  //generateGoals(selectedGoal) ADDS OR EDIT'S  current user's "goal" property in firebase.
-
-  //
-
-
-  //display3MealOptionsPerMeal() ACCESS 100 recipes in firebase (weeklyRecipes) and pull 9 random recipes.  3 for breakfast, 3 for lunch, 3 for dinner
-
-  //saveMealsForDay(selectedRecipes)  STORES selected recipes into firebase as current user's selected day meals.
- // getCurrentUser(){
- //  this.currentUser = this.userService.findUser(login);
- // }
-
-
 }

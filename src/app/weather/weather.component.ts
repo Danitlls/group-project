@@ -11,7 +11,7 @@ export class WeatherComponent implements OnInit {
   temp;
   newDate = new Date();
   currentDate = this.newDate.toDateString();
-  
+
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit() {

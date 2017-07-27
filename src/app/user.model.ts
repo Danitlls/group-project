@@ -9,9 +9,6 @@ export class User {
     {"fat", 0},
     {"protein", 0}
   ];
-
-  // enrollDate: new Date();
-  // goalDate: new Date();
   constructor(public name: string,
               public email: string,
               public login: string,
@@ -31,8 +28,5 @@ export class User {
               public dateDifference: number,
               public caloricIntake: number,
               public weeklyGoal: number
-
-
-              // public timestamp: Date
   ){}
 }

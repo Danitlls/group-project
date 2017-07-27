@@ -7,20 +7,22 @@ import { ActivatedRoute, Params } from '@angular/router';
 @Injectable()
 export class UserService {
   users: FirebaseListObservable<any[]>;
-  allUsers: User[];
+  allUsers= [];
 
-  constructor(private database: AngularFireDatabase, private route: ActivatedRoute) {    this.users = database.list('users');
-    // this.weeklyRecipes = database.list('users/0/weeklyRecipes');
-  this.users.subscribe(response => {
-    this.allUsers = response;
-    console.log(this.allUsers);
-    });
-  }
+  constructor(private database: AngularFireDatabase, private route: ActivatedRoute) {
+    this.users = database.list('users');
+    this.users.subscribe(response => {
+      this.allUsers = response;
+      console.log(this.allUsers[0].$key);
+      });
+    }
 
-  findUser(){
+  findUser(username){
+    console.log("test");
     for(var i = 0; i < this.allUsers.length; i++){
-      if(this.allUsers[i].login === "dani123"){
-        return this.allUsers[i]
+      if(this.allUsers[i].login === username){
+        console.log(this.allUsers[i]);
+        return this.allUsers[i].$key;
       }
     }
   }
@@ -42,26 +44,10 @@ export class UserService {
   }
 
   saveRecipesToDatabase(recipeArray: Recipe[], selectedUser){
-    // for(var i = 0; i < recipeArray.length; i++){
-    //   selectedUser.weeklyRecipes.push(recipeArray[i]);
-    // }
     selectedUser.weeklyRecipes = recipeArray;
     this.getUserById(selectedUser.$key).update({
       weeklyRecipes: selectedUser.weeklyRecipes
     });
-// console.log(recipeArray);
-// selectedUser.weeklyRecipes.push(recipeArray[10]);
-//
-// this.getUserById(selectedUser.$key).update({
-//   weeklyRecipes[i]: recipeArray[i]
-// });
-
-
-    //
-    // console.log(selectedUser.$key);
-    // console.log(selectedUser.weeklyRecipes);
-    // console.log("save function" + this.weeklyRecipes);
-    //gather array from api call and push to "weeklyRecipes" array in firebase
   }
 
   addUserToDB(newUser: User){

@@ -13,13 +13,11 @@
     </div>
     <div class="form-group">
       <label for="enterPassword">Password:</label>
-      <input #enterPassword>
+      <input #enterPassword type="password">
     </div>
-    <button>Enter</button>
-    <!-- <button (click)='getUser(#enter-name.value, enter-password.value )'>Get Recipes</button> -->
-
+    <button (click)="login(enterName.value)">Enter</button>
     <h4>Or Sign Up (new user component)</h4>
-    <button>Sign Up.. </button>
+    <button (click)="sendToSignUp()">Sign Up</button>
 
   </form>
 </section>
