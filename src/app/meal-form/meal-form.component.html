@@ -33,6 +33,7 @@
     <button class="done"(click)="newDay(newDate.value)" (click)="toggleForm()">I like this plan!</button>
   </div>
   </div>
+
   <div *ngIf="!showForm">
     <button (click)="toggleForm()">Plan Another Day</button>
   </div>
@@ -42,4 +43,3 @@
     </div>
     <app-display-meal [currentUser]="currentUser" [daysArray]="daysArray"></app-display-meal>
     <app-meal-log [daysArray]="daysArray"></app-meal-log>
-
