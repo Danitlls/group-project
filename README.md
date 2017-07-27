@@ -1,60 +1,56 @@
-# GroupProject
+# Climb Group Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+####  _July 27th, 2017_
 
-## Development server
+#### By _**Tyler Allen, Daniela Trulls, Lena Kuchko, Jun Fritz**_
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Description
+Our group week project is a daily meal planner that assists users with setting, planning, and achieving their lifestyle goals.  This app focuses on collecting, storing, and reporting a user's information to present them with healthy meal options and their daily progress.  It allows a user to stay accountable with planned vs actual meal reporting.
 
-## Code scaffolding
+## Specifications
+ |Behavior| Input (User Action/Selection)| Output (Program Action)|
+ |---|---|---|
+ | User can create a profile | "Create Profile" page input | Display individual "User Profile" page |
+ | User can add up to 5 ingredients they have on hand | "Chicken, Eggs" | Display "Chicken & Rice" "Eggs Benedict" "Chicken Fried Rice"|
+ | User can select or update a meal option | User clicks on update button and has option to refresh options of recipes | Display new random set of recipes for the user to choose from |
+ | User can input ingredients from actual meals they ate that day | "1 whole chicken, 2 cups of rice, 5 slices of ham, 2 beans, 2 scoops of gravy" | Bar graph displays total calories from planned daily meals vs total calories from actual daily meals |
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+## Setup/Installation Requirements
 
-## Build
+#### _**Replicating/Editing this Project**_
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+* Click the "download or clone" button in this repository and copy the link.
+* In your computers terminal enter "git clone" & paste the copied link.
+* Once successfully cloned, enter "npm install" in terminal.
+* You'll need to create an "api-keys.ts" file in the "app" folder in order to use the application.
+* Once you have the file, sign up at Edamam's API site in order to get a free api key and an API ID.
+* Once you have access to both api credentials, add them using the form below to your "api-keys.ts" file.
 
-## Running unit tests
+          export const recipeKey = "{{API KEY GOES HERE}}";
+          export const recipeId = "{{API ID GOES HERE}}";
+          export const nutritionKey = "{{API ID GOES HERE}}";
+          export const nutritionId = "{{API ID GOES HERE}}";
+          export const weatherKey = "{{API ID GOES HERE}}";
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Make sure to add this new file to the .gitignore file in order to keep your api keys private.
+* Angular CLI makes separating front end and back end easy so access all functionality and backend in the desired ".ts" files, or any "service.ts" files to alter the app.
+* For front end, "index.html", "styles.css" on the top level of the directory and any files ending in ".html" or ".css" in the app folder can be used to change the user interface.
+* When you're ready to test, open a new terminal tab and run "ng serve".  The additional tab allows you to perform commands in one tab while the server continues to run on the other.
 
-## Running end-to-end tests
+## Known bugs
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+  * No Known Bugs
 
-## Further help
+## Support and contact details
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ Contact jun.fritz@gmail.com with any comments, concerns, or questions.
 
+## Technologies Used
 
-NOT OUR API KEYS:
-export const recipeKey = '787aa21c319f1baf7c80830e5d4f97cc';
-export const recipeId = '9593a6fa';
+ _HTML, CSS, TypeScript, Angular 2, Angular CLI_
 
-export var masterFirebaseConfig = {
-  apiKey: "AIzaSyCltulhiM-_iw6iFjXg9qz5raG7RHPCPiU",
-  authDomain: "recipeapi-f5baf.firebaseapp.com",
-  databaseURL: "https://recipeapi-f5baf.firebaseio.com",
-  projectId: "recipeapi-f5baf",
-  storageBucket: "",
-  messagingSenderId: "753676267532"
-}
+### License
 
-epicodusfakeemail firebase
-export var masterFirebaseConfig2 = {
-  apiKey: "AIzaSyDEaduy4RI1o-K0SJmit_YVNJJxjwQQjmI",
-  authDomain: "group-project-5a62d.firebaseapp.com",
-  databaseURL: "https://group-project-5a62d.firebaseio.com",
-  projectId: "group-project-5a62d",
-  storageBucket: "",
-  messagingSenderId: "463416562030"
-}
+ MIT
 
-epicodusfakeemail@gmail.com
-Stayfocused
-
-https://valor-software.com/ng2-charts/
-
-export const nutritionKey = 'f42b9f80be8daa73945e30d1c5e0c3a2';
-export const nutritionId = 'd6710f55';
+ Copyright (c) 2017 **_Tyler Allen, Daniela Trulls, Lena Kuchko, Jun Fritz_**
