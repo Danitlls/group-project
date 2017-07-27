@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Recipe } from '../recipe.model';
@@ -11,10 +11,35 @@ import { UserService } from '../user.service';
   selector: 'app-meal-form',
   templateUrl: './meal-form.component.html',
   styleUrls: ['./meal-form.component.sass'],
-  providers: [RecipeService, SecondRecipeService, UserService]
+  providers: [RecipeService, SecondRecipeService, UserService],
+  animations: [
+    trigger('focusPanel', [
+      state('inactive', style({
+        transform: 'scale(1)',
+        backgroundColor: '#eee'
+      })),
+      state('active', style({
+        transform: 'scale(1.1)',
+        backgroundColor: '#cfd8dc'
+      })),
+      transition('inactive => active', animate('100ms ease-in')),
+      transition('active => inactive', animate('100ms ease-out'))
+    ]),
+    trigger('movePanel', [
+      transition('void => *', [
+        animate(600, keyframes([
+          style({opacity: 0, transform: 'translateY(-200px)', offset: 0}),
+          style({opacity: 1, transform: 'translateY(25px)', offset: .75}),
+          style({opacity: 1, transform: 'translateY(0)', offset: 1}),
+        ]))
+      ])
+    ])
+  ]
 })
 
 export class MealFormComponent implements OnInit {
+  state: string = 'active';
+
   @Input() currentUser;
   recipeOptions: Recipe[];
   tempOptions: Recipe[] = [];
@@ -30,8 +55,14 @@ export class MealFormComponent implements OnInit {
   }
 
   toggleForm(){
+    // this.state = (this.state === 'active' ? 'inactive' : 'active');
     if(this.showForm){
       this.showForm = false;
+      this.state = (this.state === 'active' ? 'inactive' : 'active');
+    }
+    else if (!(this.showForm)){
+      this.showForm = true;
+      this.state = (this.state === 'inactive' ? 'active' : 'inactive');
     }
   }
 

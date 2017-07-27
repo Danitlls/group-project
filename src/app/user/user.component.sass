@@ -24,16 +24,19 @@ section
   // width: 400px
   margin: 0 auto
   overflow: hidden
-  height: 200px
+  min-height: 160px
+  img
+    
+    width: 100%
+  @include medium-bp
+    img
+      max-height: 300px
+      max-width: 900px
+
 
 .weather
   height: 90px
   margin: 20px
-
-.status-image
-  @include medium-bp
-    height: 300px
-    // background-color: red
 
 .logo
   text-align: right
