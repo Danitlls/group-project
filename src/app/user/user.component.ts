@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
   userId;
   currentUser;
   goalDate;
+  totalCalories;
   // currentUserDate: string = this.currentUser.goalDate.toDateString();
   // newDate = new Date(this.currentUser.goal);
   // currentDate = this.newDate.toDateString();
@@ -32,7 +33,7 @@ export class UserComponent implements OnInit {
       this.currentUser = response;
       let date = new Date(this.currentUser.goalDate);
       this.goalDate = date.toDateString();
-      console.log(this.goalDate);
+      this.totalCalories = Math.floor(this.currentUser.caloricIntake);
     })
   }
 }
