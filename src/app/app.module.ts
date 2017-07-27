@@ -29,13 +29,6 @@ export const firebaseConfig = {
   storageBucket: masterFirebaseConfig.storageBucket
 };
 
-//
-// export const firebaseConfig = {
-//   apiKey: masterFirebaseConfig2.apiKey,
-//   authDomain: masterFirebaseConfig2.authDomain,
-//   databaseURL: masterFirebaseConfig2.databaseURL,
-//   storageBucket: masterFirebaseConfig2.storageBucket
-// };
 
 @NgModule({
   declarations: [

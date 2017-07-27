@@ -7,21 +7,22 @@ import { ActivatedRoute, Params } from '@angular/router';
 @Injectable()
 export class UserService {
   users: FirebaseListObservable<any[]>;
-  allUsers: User[];
+  allUsers= [];
 
   constructor(private database: AngularFireDatabase, private route: ActivatedRoute) {
     this.users = database.list('users');
-    // this.weeklyRecipes = database.list('users/0/weeklyRecipes');
-  this.users.subscribe(response => {
-    this.allUsers = response;
-    console.log(this.allUsers);
-    });
-  }
+    this.users.subscribe(response => {
+      this.allUsers = response;
+      console.log(this.allUsers[0].$key);
+      });
+    }
 
-  findUser(){
+  findUser(username){
+    console.log("test");
     for(var i = 0; i < this.allUsers.length; i++){
-      if(this.allUsers[i].login === "dani123"){
-        return this.allUsers[i]
+      if(this.allUsers[i].login === username){
+        console.log(this.allUsers[i]);
+        return this.allUsers[i].$key;
       }
     }
   }
