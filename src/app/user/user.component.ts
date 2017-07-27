@@ -17,6 +17,7 @@ import { UserService } from '../user.service';
 export class UserComponent implements OnInit {
   userId;
   currentUser;
+  goal;
   goalDate;
   totalCalories;
   // currentUserDate: string = this.currentUser.goalDate.toDateString();
@@ -34,6 +35,15 @@ export class UserComponent implements OnInit {
       let date = new Date(this.currentUser.goalDate);
       this.goalDate = date.toDateString();
       this.totalCalories = Math.floor(this.currentUser.caloricIntake);
+      if(this.currentUser.goal === "gain"){
+        this.goal = "Gain Weight";
+      }
+      else if(this.currentUser.goal === "lose"){
+        this.goal = "Lose Weight";
+      }
+      else {
+        this.goal = "Maintain Weight"
+      }
     })
   }
 }
