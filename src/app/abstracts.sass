@@ -26,15 +26,14 @@ $button-no-color: #f53974
 // for forms:
 %save-button
   font-family: $font-buttons
-  font-size: 16px
+  cursor: pointer
+  font-size: 20px
   color: white
   letter-spacing: 2px
   text-transform: uppercase
   border: 0
   background-color: $button-ok-color
-  padding: 20px 30px
   transition: background-color .3s
-  cursor: pointer
   &:after
     transition: border-top-color .3s
   &:hover
@@ -49,14 +48,18 @@ $button-no-color: #f53974
 
 //Breakpoints
 $mediumBp: 'screen and (min-width: 700px)'
-$largeBp: 'screen and (min-width: 1000px)'
-$categoryInlineBp: 'screen and (min-width: 1100px)'
+$largeBp: 'screen and (min-width: 1400px)'
+$recipeCardsBp: 'screen and (min-width: 900px)'
 $navFlexBp: 'screen and (min-width: 1180px)'
 $xLargeBp: 'screen and (min-width: 1580px)'
 
 //MediaQueries:
 @mixin medium-bp
   @media #{$mediumBp}
+    @content
+
+@mixin recipeCards-bp
+  @media #{$recipeCardsBp}
     @content
 
 @mixin large-bp
