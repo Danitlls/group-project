@@ -1,18 +1,36 @@
 @import "../abstracts"
 
+
 section
   @extend %flex
   padding: 20px
-  background-color: white
+  // background-color: white
+  background-color: #00b0eb
+  height: 90vh
+  @include medium-bp
+    height: auto
+
 
   form
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, .7)
+    border-radius: 15px
+    border-color: #E9E9E9
+    background-color: #E9E9E9
+    @include medium-bp
+      height: auto
+      max-width: 700px
+      input
+        width: 500px
+      img
+        width:
     label
-      padding-left: 45px
+      padding-left: 10%
 
     button
       @extend %save-button
-      padding: 5px
-      margin-bottom: 20px
+      // padding: 5px
+      margin: 5px 10%
+      margin-bottom: 10px
 
 
 h4
@@ -22,6 +40,9 @@ h4
 img
   height: 100%
   width: 100%
+  @include medium-bp
+    max-height: 300px
+    max-width: 600px
 
 .logo
   text-align: center

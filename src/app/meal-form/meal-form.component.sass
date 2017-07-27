@@ -1,9 +1,18 @@
 @import "../abstracts"
 
+
 #meal
-  border: 2px solid pink
-  padding: 20px
-  margin: 20px
+  // border: 2px solid pink
+  @include medium-bp
+    padding: 20px
+    margin: 20px
+    input, button
+      max-width: 715px
+  @include large-bp
+    input, button
+      max-width: 900px
+    .blueButtons
+      width: 440px
   h3
     margin: 10px auto
 button

@@ -8,9 +8,9 @@
       <input #newIngredient2 placeholder="Ingredient2">
       <input #newIngredient3 placeholder="Ingredient3">
       <input #newIngredient4 placeholder="Ingredient4">
-      <input #newIngredient5 placeholder="Ingredient4">
-      <button (click)='getWeeklyMenu(newIngredient1.value, newIngredient2.value, newIngredient3.value, newIngredient4.value, newIngredient5.value)'>Generate Random Menu</button>
-      <button (click)='getDayOptions()'>Refresh</button>
+      <input #newIngredient5 placeholder="Ingredient5">
+      <button class="blueButtons" (click)='getWeeklyMenu(newIngredient1.value, newIngredient2.value, newIngredient3.value, newIngredient4.value, newIngredient5.value)'>Generate Random Menu</button>
+      <button class="blueButtons" (click)='getDayOptions()'>Refresh</button><br>
     <div *ngIf="recipeOptions">
       <select #newBreakfast (change)='onChange($event.target.value)'>
         <option value="0">{{recipeOptions[0].name}}</option>
@@ -33,6 +33,7 @@
     <button class="done"(click)="newDay(newDate.value)" (click)="toggleForm()">I like this plan!</button>
   </div>
   </div>
+
   <div *ngIf="!showForm">
     <button (click)="toggleForm()">Plan Another Day</button>
   </div>
