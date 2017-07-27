@@ -8,16 +8,14 @@
 </nav>
 
 <div class="status-image">
-
   <img src="src/climb.png" alt="">
 </div>
 
 <section>
-  <h3>Welcome {{currentUser.name}}</h3>
-
-  <app-weather></app-weather>
 
   <div class="current-plan">
+    <h3>Welcome {{currentUser.name}}</h3>
+    <app-weather></app-weather>
     <p>Your goal weight: {{currentUser.goalWeight}} lbs</p>
     <p>Lets accomplish this by: {{goalDate}}</p>
     <p>Recommended Daily Caloric Intake: {{totalCalories}}</p>
