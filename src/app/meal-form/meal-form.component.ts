@@ -33,6 +33,9 @@ export class MealFormComponent implements OnInit {
     if(this.showForm){
       this.showForm = false;
     }
+    else if (!this.showForm){
+      this.showForm = true;
+    }
   }
 
   getDayOptions(){
