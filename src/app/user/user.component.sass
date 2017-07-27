@@ -1,10 +1,10 @@
 @import "../abstracts"
 
 nav
-  background-color: hotpink
+  background-color: $bg-color
 
   @extend %flex
-  justify-content: flex-end
+  justify-content: space-between
   a
     color: white
 li
@@ -12,7 +12,7 @@ li
 
 section
   padding: 20px
-  background-color: #f7f5f4
+  background-color: $bg-color
   text-align: center
 
   button
@@ -34,3 +34,9 @@ section
   @include medium-bp
     height: 300px
     // background-color: red
+
+.logo
+  text-align: right
+  img
+    width: 160px
+    padding: 0 10px
