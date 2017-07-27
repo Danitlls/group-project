@@ -30,7 +30,7 @@ export const firebaseConfig = {
 };
 
 //
-// export const firebaseConfig2 = {
+// export const firebaseConfig = {
 //   apiKey: masterFirebaseConfig2.apiKey,
 //   authDomain: masterFirebaseConfig2.authDomain,
 //   databaseURL: masterFirebaseConfig2.databaseURL,

@@ -9,7 +9,8 @@ export class UserService {
   users: FirebaseListObservable<any[]>;
   allUsers: User[];
 
-  constructor(private database: AngularFireDatabase, private route: ActivatedRoute) {    this.users = database.list('users');
+  constructor(private database: AngularFireDatabase, private route: ActivatedRoute) {
+    this.users = database.list('users');
     // this.weeklyRecipes = database.list('users/0/weeklyRecipes');
   this.users.subscribe(response => {
     this.allUsers = response;
