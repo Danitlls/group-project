@@ -17,8 +17,7 @@ export class MealLogComponent implements OnInit {
   @Input() daysArray;
   mealLog: Recipe[];
   firstRecipe;
-  // dataPlan: number[] = [];
-  // dataFact: number[] = [];
+
   constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
   ngOnInit() {
@@ -32,15 +31,10 @@ export class MealLogComponent implements OnInit {
     console.log(this.mealLog[1]);
     console.log(this.mealLog[2]);
     console.log(this.mealLog);
-    // console.log(this.recipeService.createDayMeals());
   }
 
   logDay(){
     this.recipeService.createDayMeals();
-    // let test = [];
-    // this.dataPlan = test[0];
-    // this.dataFact = test[1];
-    // console.log("logDay function " + test);
   }
 
 

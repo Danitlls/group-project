@@ -23,21 +23,6 @@ export class RecipeService {
   final: any[] = [];
   constructor(private http: Http, private userService: UserService, private database: AngularFireDatabase) { }
 
-  // getRecipeFromApiByIngredient(search: string, count: number){
-  //   let random = Math.floor((Math.random() * 50) + 1);
-  //   // let secondRandom = random;
-  //
-  //   return this.http.get("https://api.edamam.com/search?q=chicken&app_id=9593a6fa&app_key=787aa21c319f1baf7c80830e5d4f97cc&from=0&to=3&calories=gte%20591,%20lte%20722&health=alcohol-free").subscribe(response => {
-  //     let foundRecipe: Recipe;
-  //
-  //     for(let result of response.json().hits) {
-  //       let caloriesPer = (result.recipe.calories / result.recipe.yield);
-  //       foundRecipe = new Recipe(result.recipe.label, caloriesPer, result.recipe.totalNutrients.CHOCDF.quantity, result.recipe.totalNutrients.FAT.quantity, result.recipe.totalNutrients.PROCNT.quantity, result.recipe.url, result.recipe.image)
-  //       console.log(foundRecipe);
-  //     }
-  //   });
-  // }
-//1 cup of apples, 1 whole chicken, 1 cup of rice
   analyzeMeal(search: string){
     return this.http.get("https://api.edamam.com/api/nutrition-data?app_id=" + this.NutritionId + "&app_key=" + this.NutritionKey + "&ingr=" + search);
   }
@@ -124,15 +109,4 @@ export class RecipeService {
     console.log(this.final);
     return this.final;
   }
-
-//   saveRecipes(search: string){
-//
-//     return this.http.get("https://api.edamam.com/search?q=" + search + "&app_id=" + this.RecipeId +   "&app_key=" + this.RecipeKey + "&from=" + random + "&to=" + secondRandom + "&calories=gte%20591,%20lte%20722")
-//
-//         for(let item of result.recipe.ingredients){
-//           foundRecipe.ingredients.push(item.text);
-//         }
-//         console.log(foundRecipe);
-//     }
-//
 }

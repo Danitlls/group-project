@@ -20,4 +20,8 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['user/profile/'+ test]);
   }
 
+  sendToSignUp(){
+    this.router.navigate(['new-user']);
+  }
+
 }

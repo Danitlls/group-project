@@ -11,10 +11,6 @@ export class SecondRecipeService {
   constructor(private af: AngularFireDatabase, private userService: UserService) {
     this.users = af.list('users');
   }
-
-  // addRecipe(newRecipe: Recipe) {
-  //   this.recipes.push(newRecipe);
-  // }
   saveRecipesToDatabase(recipeArray: Recipe[]){
     console.log("save function" + recipeArray)
     this.users[0].weeklyRecipes.push(recipeArray);

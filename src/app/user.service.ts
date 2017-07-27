@@ -44,26 +44,10 @@ export class UserService {
   }
 
   saveRecipesToDatabase(recipeArray: Recipe[], selectedUser){
-    // for(var i = 0; i < recipeArray.length; i++){
-    //   selectedUser.weeklyRecipes.push(recipeArray[i]);
-    // }
     selectedUser.weeklyRecipes = recipeArray;
     this.getUserById(selectedUser.$key).update({
       weeklyRecipes: selectedUser.weeklyRecipes
     });
-// console.log(recipeArray);
-// selectedUser.weeklyRecipes.push(recipeArray[10]);
-//
-// this.getUserById(selectedUser.$key).update({
-//   weeklyRecipes[i]: recipeArray[i]
-// });
-
-
-    //
-    // console.log(selectedUser.$key);
-    // console.log(selectedUser.weeklyRecipes);
-    // console.log("save function" + this.weeklyRecipes);
-    //gather array from api call and push to "weeklyRecipes" array in firebase
   }
 
   addUserToDB(newUser: User){

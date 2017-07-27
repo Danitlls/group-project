@@ -6,9 +6,7 @@ import { routing } from './app.routing';
 import { MomentModule } from 'angular2-moment';
 import { AppComponent } from './app.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
-import { masterFirebaseConfig,
-// masterFirebaseConfig2
-} from './api-keys';
+import { masterFirebaseConfig } from './api-keys';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { UserComponent } from './user/user.component';
@@ -49,7 +47,6 @@ export const firebaseConfig = {
     HttpModule,
     routing,
     AngularFireModule.initializeApp(firebaseConfig),
-    // AngularFireModule.initializeApp(firebaseConfig2),
     AngularFireDatabaseModule,
     MomentModule,
     ChartsModule

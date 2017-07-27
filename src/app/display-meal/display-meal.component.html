@@ -1,5 +1,3 @@
-<h4>display-meal component.........Starts here</h4>
-
 <div *ngIf="daysArray[0]">
   <div *ngIf="daysArray[0]">
     <p>{{daysArray[0].totalCalories}}</p>
@@ -20,7 +18,6 @@
       <h4>Nutrition Facts</h4>
       <ul>
         <li style="background-image: url('src/covering.png')">{{daysArray[0].breakfast.calories}}Cal.</li>
-        <!-- <li class="background-image: url('src/covering.png')">{{daysArray[0].breakfast.calories}}Cal.</li> -->
         <li style="background-image: url('src/biscuit.png')">{{daysArray[0].breakfast.carbs}}g</li>
         <li style="background-image: url('src/donut.png')">{{daysArray[0].breakfast.fat}}g</li>
         <li style="background-image: url('src/egg.png')">{{daysArray[0].breakfast.protein}}g</li>
@@ -48,7 +45,6 @@
       <div class="food-photo">
         <img src='{{daysArray[0].dinner.image}}' alt="">
       </div>
-      <!-- <h4>Nutrition Facts</h4> -->
       <ul>
         <li style="background-image: url('src/covering.png')">{{daysArray[0].dinner.calories}}Cal.</li>
         <li style="background-image: url('src/biscuit.png')">{{daysArray[0].dinner.carbs}}g</li>
@@ -58,5 +54,4 @@
       <a href="{{daysArray[0].dinner.link}}">Open Recipe</a>
     </div>
   </div>
-
 </div>

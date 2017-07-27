@@ -45,7 +45,6 @@ export class MealFormComponent implements OnInit {
     for(var i = 0, j = 0; i < 3; i++, j+=3){
       this.tempOptions[i] = this.recipeOptions[j];
     }
-    // console.log("test" + this.tempOptions);
   }
 
   getWeeklyMenu(ingredient1, ingredient2, ingredient3, ingredient4, ingredient5){
@@ -53,12 +52,9 @@ export class MealFormComponent implements OnInit {
     let ingredients: string[] = [ingredient1, ingredient2, ingredient3, ingredient4, ingredient5];
     this.recipeService.clearUserWeeklyRecipes(this.currentUser);
     var userIngredients = this.recipeService.createArrayWithOnlyUserIngredients(ingredients);
-    // console.log(userIngredients);
-
     let calorieLimitPerMeal: number = Math.floor(this.currentUser.caloricIntake);
     var count = 1;
     for (let ingredient of userIngredients){
-      // console.log(this.recipeService.getBasicRecipesForDay(calorieLimitPerMeal, 20, ingredient));
       this.recipeService.getBasicRecipesForDay(calorieLimitPerMeal, 20, ingredient).subscribe(response => {
       console.log("meal component: ", response.json().hits);
       let foundRecipe: Recipe;
@@ -68,24 +64,16 @@ export class MealFormComponent implements OnInit {
         if(result.recipe.totalNutrients.PROCNT && result.recipe.totalNutrients.FAT && result.recipe.totalNutrients.CHOCDF) {
           let caloriesPer = (result.recipe.calories / result.recipe.yield);
           foundRecipe = new Recipe(result.recipe.label, Math.floor(caloriesPer),Math.floor(result.recipe.totalNutrients.CHOCDF.quantity), Math.floor(result.recipe.totalNutrients.FAT.quantity), Math.floor(result.recipe.totalNutrients.PROCNT.quantity), result.recipe.url, result.recipe.image)
-          // console.log(foundRecipe);
           this.weekRecipes.push(foundRecipe);
         }
-        // console.log("week recipes ", this.weekRecipes);
         count ++;
-        // console.log(count);
         if(count === (20 * userIngredients.length)){
           this.currentUser.weeklyRecipes = [];
           this.userService.saveRecipesToDatabase(this.weekRecipes, this.currentUser);
           console.log("inside if statement: " + this.currentUser.weekRecipes);
         }
       }
-    //   //
-    //   //
       this.getDayOptions();
-    //
-    // });
-
     });
   }
 }
@@ -121,7 +109,6 @@ export class MealFormComponent implements OnInit {
 
   updateDay(selectedDay: Date){
     console.log(selectedDay);
-    // console.log(this.daysArray.length);
     let totalCalories: number = 0;
     let totalCarbs: number = 0;
     let totalFat: number = 0;

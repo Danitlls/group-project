@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 const appRoutes: Routes = [
   {
     path: '',
-    component: RecipeFormComponent
+    component: LoginComponent
   },
   {
     path: 'new-user',
@@ -17,10 +17,6 @@ const appRoutes: Routes = [
   {
     path: 'user/profile/:id',
     component: UserComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
   }
 ]
 
