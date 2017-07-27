@@ -17,6 +17,10 @@ import { UserService } from '../user.service';
 export class UserComponent implements OnInit {
   userId;
   currentUser;
+  goalDate;
+  // currentUserDate: string = this.currentUser.goalDate.toDateString();
+  // newDate = new Date(this.currentUser.goal);
+  // currentDate = this.newDate.toDateString();
 
   constructor(private route: ActivatedRoute, private location: Location, public recipeService: RecipeService, public userService: UserService) { }
 
@@ -26,6 +30,9 @@ export class UserComponent implements OnInit {
     });
     this.userService.getUserById(this.userId).subscribe(response => {
       this.currentUser = response;
+      let date = new Date(this.currentUser.goalDate);
+      this.goalDate = date.toDateString();
+      console.log(this.goalDate);
     })
   }
 }
